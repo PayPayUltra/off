@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>日記アプリ(仮版)α4.5a</title>
+<title>日記アプリ(仮版)α4.5b</title>
 <link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
 :root{--gray:#eef0f3;--card:#fff;--ink:#1d2330;--sub:#6b7385;--line:#e1e4ea;--sun:#d0475a;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
@@ -12,7 +12,7 @@
 body[data-tab="diary"]{--bgL:#fbf2e8;--aL:#c4621a;--bgD:#211b14;--aD:#f0a066}
 body[data-tab="dream"]{--bgL:#f5f6f8;--aL:#7a56c9;--bgD:#12151c;--aD:#a98ae8}
 body[data-tab="coin"]{--bgL:#e8f6f0;--aL:#1c9a70;--bgD:#121c18;--aD:#5fd0a5}
-body[data-tab="portal"]{--bgL:#e9f2fb;--aL:#2563a0;--bgD:#101a24;--aD:#6fb0ea}
+body[data-tab="portal"]{--bgL:#e0f5fd;--aL:#0a95c9;--bgD:#0f2b36;--aD:#4fd0f0}
 body{--bg:var(--bgL);--a:var(--aL)}
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]) body{--bg:var(--bgD);--a:var(--aD)}}
 :root[data-theme="dark"] body{--bg:var(--bgD);--a:var(--aD)}
@@ -242,12 +242,15 @@ body[data-pgd] #fab{display:none!important}
 .pnv{display:flex;align-items:center;gap:8px;margin-top:10px}.pnv span{flex:1;text-align:center;font-weight:700}
 .pnv button{min-width:44px;min-height:44px;border:0;border-radius:10px;background:var(--card);color:var(--ink);font:inherit}.pnv button:disabled{opacity:.4}
 .pmr{display:block;width:100%;min-height:46px;margin-top:12px;border:0;border-radius:12px;background:var(--card);color:var(--a);font:inherit;font-weight:700}
-.pact{display:flex;gap:6px;margin-top:6px;flex-wrap:wrap}
+.pact{display:flex;gap:6px;margin-top:6px;flex-wrap:wrap;padding:4px;border:1px solid var(--line);border-radius:14px}
 .pbt{min-height:36px;padding:0 12px;border:1px solid var(--line);border-radius:999px;background:var(--card);color:var(--ink);font:inherit;font-size:12px}
 .pbt.on{background:color-mix(in srgb,var(--a) 10%,var(--card));border-color:var(--a);color:var(--a);font-weight:700}
 .pbt.pr2{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0;padding:2px 12px;line-height:1.1}
 .pbt.pr2 .pe{font-size:15px;line-height:1;filter:grayscale(1);opacity:.6}
-.pbt.pr2 .pl{font-size:9.5px;line-height:1.2;color:var(--sub);font-weight:400}
+.pbt.pr2 .pl{font-size:9.5px;line-height:1.2;color:var(--sub);font-weight:400;white-space:nowrap}
+.pbt.pr2 .pn2{display:inline-block;min-width:3ch;text-align:left;margin-left:2px;font-variant-numeric:tabular-nums}
+.tabs button[data-t="portal"]{position:relative}
+#prb{position:absolute;top:2px;right:4px;margin:0}
 .pbt.pr2.on{background:var(--card);border-color:var(--a);font-weight:400}
 .pbt.pr2.on .pe{filter:none;opacity:1}
 .pbt.pr2.on .pl{color:var(--a);font-weight:700}
@@ -314,7 +317,7 @@ body[data-pgd] #fab{display:none!important}
     <div id="tkrow" style="display:flex;align-items:center;gap:8px;margin-bottom:6px"><span class="st" id="tkl"></span></div>
     <div id="list"></div>
   </div>
-<p class="ver" style="text-align:center;font-size:12px;color:var(--sub)">α4.5a</p>
+<p class="ver" style="text-align:center;font-size:12px;color:var(--sub)">α4.5b</p>
 </section>
 <section id="portalUI" hidden>
   <div class="seg" id="pseg"><button data-pg="a" class="on">つぶやきと日記</button><button data-pg="d">夢日記</button></div>
@@ -427,7 +430,7 @@ body[data-pgd] #fab{display:none!important}
   </div>
 </div>
 <nav class="tabs" role="tablist">
-  <button role="tab" data-t="portal" aria-selected="false">ポータル<span class="bdg" id="pbd" hidden></span></button>
+  <button role="tab" data-t="portal" aria-selected="false">ポータル<span class="bdg" id="pbd" hidden></span><span class="bdg" id="prb" hidden></span></button>
   <button role="tab" data-t="diary" aria-selected="true">日記</button>
   <button role="tab" data-t="dream" aria-selected="false">夢日記</button>
   <button role="tab" data-t="coin" aria-selected="false" hidden>硬貨</button>
@@ -945,7 +948,7 @@ S('α3.1','修整',0,[['変更','その他欄の中をボタンで項目分け�
 ['α3.3c','解説の追加',0,[['追加','硬貨ガシャの年号ごとの解説(レアでない年号も含む)'],['変更','紙幣ガシャを、使えないメンテナンス中の表示に'],['変更','歴史欄のタイトルを短く整理'],['追加','歴史欄のα2.0に、旧α1.3の説明']]],
 ['α3.3d','額面別ガシャ',0,[['追加','額面別の硬貨ガシャ(券2枚、「額面別」を押すと出るポップアップで額面を選ぶ)'],['変更','硬貨タブのガシャを「貨幣ガシャ」の1ボタンに、ガシャ画面のバーで種類を選ぶ形に'],['変更','券の無制限をやめて、券の配布(5億枚)に'],['変更','図鑑の額面を小さい順に、最初は1円で、前に開いた額面を覚える'],['変更','解説の見出しを「500円 平成12年について」の形に']]]]],
 S('α3.4','パスコードで開放',0,[['追加','プ流不ボタンを押すとリボンメッセージ「プ流不入手!」が出る、パスコード「coin」で硬貨タブと貨幣の解説が開く、パスコード「history」で歴史が開く、一度開いたものはそのまま開いたままになる'],['変更','硬貨タブと貨幣の解説と歴史を最初は隠した状態に、これまでに使っていた人は開いた状態のまま引き継ぐ、パスコードを大文字・小文字の区別なしに、「Zomikasu」の表記を「zomikasu」に']])]],
-["α4.0台","ログインと共有",[["α4.0","ログインとパスコード",[["α4.0","ログインとパスコード",0,[["追加","その他欄に「ログイン」の項目、ログインコードを貼ってログインしてログアウトするまでログイン画面を出さない、ログインのときに共有先のリポジトリが非公開かどうかを確かめる"],["変更","パスコードを設定の中から出して歴史や設定と同じ並びの独立した項目に、夢日記と貨幣収集のカレンダーで今の月より先へ進めないように"]]],["α4.0a","ログイン画面を最初に",1,[["追加","GitHub Pagesで開いたときにアプリを開くと最初にログイン画面が出てログインしたあとに日記などのページへ移る、パスコードの入力欄をその他欄の一覧の一番下に直接置く、設定にログイン中の表示とログアウトボタンを追加"],["変更","その他欄の「ログイン」の項目を設定の中のログアウトにまとめる、バックアップを設定の一番下に移動、パスコードの項目をやめて入力欄だけに"]]],["α4.0b","メール登録と承認",1,[["追加","GitHub Pagesで開くとメールアドレスとパスワードのログイン画面が出る、新規登録は名前と合言葉を入れて承認待ちになる、管理者が設定の中のメンバーの承認で承認と取り消しをする、パスワードを忘れたときの再設定メール、一度ログインすると通信がなくても開ける"],["変更","ログインコードによるログインをやめてFirebaseのアカウントに切り替え、Firebaseの設定が未入力のときはログイン画面を出さない"]],"旧α4.1"]]],["α4.1","Googleでログイン",[["α4.1","Googleでログイン",1,[["追加","Googleアカウントでログインする、初めての人は名前とIDと合言葉で登録する、IDは英字・数字・_ の2〜16文字で重複しない、承認の一覧にIDとGoogleのメールを表示する、データの置き場所をRealtime Databaseにして設定を入れた"],["変更","メールアドレスとパスワードによるログインをやめた、ログイン中は設定のIDが登録したIDに固定される"]],"旧α4.1a"]]],["α4.2","ポータル",[["α4.2","ポータル",1,[["追加","ポータルのタブ(一番左・青色)、[つぶやきと日記]と[夢日記]の2ページで承認済みの人の投稿を新しい順に見られる、ポータルの✎ボタン(スライド入力)からつぶやきを投稿できる、日記と夢日記の入力欄に「ポータルにも投稿」のスイッチ(初期はオフ)、記録の一覧に「ポータルへ」ボタン、自分の投稿を削除できる(管理者は全員分を削除できる)"],["変更","ポータルの投稿は記録のコピーとして独立していて、あとで記録を直してもポータル側は変わらない、予定は投稿できない、歴史の版の名前を整理(旧α4.1をα4.0b、旧α4.1aをα4.1に)"]]]]],["α4.3","IDログイン",[["α4.3","IDログイン",1,[["追加","IDとパスワードでログインする機能、ログイン画面の「Googleでログイン」の下にIDとパスワードの欄、設定のログインの中にパスワードの設定欄(Googleでログインしたあとに作る、8文字以上、あとから変更もできる)、別の端末でもGoogleを通さずに同じアカウントで入れる"],["変更","パスワードを忘れたときは、Googleでログインして設定から作り直す、設定のGoogle欄は、IDとパスワードでログインしているときは「IDとパスワードでログイン中」と表示"]]]]],["α4.4","ポータルの見た目",[["α4.4","ポータルの見た目",1,[["追加","投稿者ごとのアイコン(名前の最初の1文字、色はIDで決まる)、新着の投稿に「NEW」の印と「ここまで読みました」の線、下のタブの「ポータル」に新着の件数のバッジ、日記の投稿に記録の日付、長い日記は3行で折りたたんで「続きを読む」"],["変更","つぶやき(青)・日記(オレンジ)・夢日記(紫)で札とカード左端の色を分けた、自分の投稿は薄く色を付けて「あなた」と表示、ログインしている間は、ポータルを開いていなくても新しい投稿を読み込む"]]],["α4.4a","ポータルの読み込み",1,[["追加","夢日記のページを1日ずつ見られるようにした(◀ ▶と「今日」で日付を移る)、つぶやきと日記のページは最初に10件だけ読み込んで「もっと読み込む」で10件ずつ増やす"],["変更","ポータルの夢日記のページでは、✎のスライドボタンを出さないようにした、下のタブの新着バッジは前に見た時刻より新しい投稿だけを読み込んで数える、ポータルを開いている間だけ投稿を読み込む"]]],["α4.4b","反応と不具合直し",1,[["追加","ポータルのつぶやきと日記に「いいね」「シネシネ」「リプ」のボタン(押した数が出る、リプは返信の欄が開く、自分のリプは消せる)、夢日記は記録を1日1回までにした、管理者だけIDを設定で変えられて1文字から使えるようにした"],["変更","IDを変えたあとは、設定でパスワードをもう一度設定すると、新しいIDでログインできるようにした、ポータルに移ったときも上に残っていた小さなカレンダーを消すようにした、iPhoneでたまに反応しなかったスライド入力ボタンを直す予防を入れた、リプを入力している間は画面を作り直さないようにした"]]]]],["α4.5","ゾミカスダンジョンのチケット",[["α4.5","ゾミカスダンジョンのチケット",1,[["追加","ポータルに投稿すると、ゲーム「ゾミカスダンジョン」で使えるチケットのコードが1日1枚もらえる(投稿した直後に表示、コピーボタン付き、有効期限は約1か月)、設定に「ゾミカスダンジョンのチケット」の項目(もらったチケットを見返してコピーできる)、ゲームの専用リンク(?from=zomika または #zomika)から開いたときにチケットの説明を出す、夢日記の「ポータルにも投稿」にチェックを付けたときに内容を盛らないよう注意するポップアップ"],["変更","バックアップにもらったチケットも入れた"]]],["α4.5a","4.4・4.5の修整",1,[["変更","貨幣収集の券を「ガシャ券」の表記にして、日記・夢日記では出さず、貨幣収集の記録でだけもらえるようにした(いまある券はそのまま)、ポータルのいいね・シネシネのボタンを、👍と🖕の絵文字の下に小さく文字を入れる形に(押していないときは絵文字がグレー、押すと本来の色とアクセント色の枠になる)、リプのボタンを開いたときの色を薄くした"],["修正","設定で名前を変えたときに、ポータルの投稿とリプの名前にも使われるように、リプを送ったあと入力欄がすぐ空になるように、歴史欄にα4.5が出ていなかったのを直した、α4.4とα4.5を公開にした"]]]]]]]];
+["α4.0台","ログインと共有",[["α4.0","ログインとパスコード",[["α4.0","ログインとパスコード",0,[["追加","その他欄に「ログイン」の項目、ログインコードを貼ってログインしてログアウトするまでログイン画面を出さない、ログインのときに共有先のリポジトリが非公開かどうかを確かめる"],["変更","パスコードを設定の中から出して歴史や設定と同じ並びの独立した項目に、夢日記と貨幣収集のカレンダーで今の月より先へ進めないように"]]],["α4.0a","ログイン画面を最初に",1,[["追加","GitHub Pagesで開いたときにアプリを開くと最初にログイン画面が出てログインしたあとに日記などのページへ移る、パスコードの入力欄をその他欄の一覧の一番下に直接置く、設定にログイン中の表示とログアウトボタンを追加"],["変更","その他欄の「ログイン」の項目を設定の中のログアウトにまとめる、バックアップを設定の一番下に移動、パスコードの項目をやめて入力欄だけに"]]],["α4.0b","メール登録と承認",1,[["追加","GitHub Pagesで開くとメールアドレスとパスワードのログイン画面が出る、新規登録は名前と合言葉を入れて承認待ちになる、管理者が設定の中のメンバーの承認で承認と取り消しをする、パスワードを忘れたときの再設定メール、一度ログインすると通信がなくても開ける"],["変更","ログインコードによるログインをやめてFirebaseのアカウントに切り替え、Firebaseの設定が未入力のときはログイン画面を出さない"]],"旧α4.1"]]],["α4.1","Googleでログイン",[["α4.1","Googleでログイン",1,[["追加","Googleアカウントでログインする、初めての人は名前とIDと合言葉で登録する、IDは英字・数字・_ の2〜16文字で重複しない、承認の一覧にIDとGoogleのメールを表示する、データの置き場所をRealtime Databaseにして設定を入れた"],["変更","メールアドレスとパスワードによるログインをやめた、ログイン中は設定のIDが登録したIDに固定される"]],"旧α4.1a"]]],["α4.2","ポータル",[["α4.2","ポータル",1,[["追加","ポータルのタブ(一番左・青色)、[つぶやきと日記]と[夢日記]の2ページで承認済みの人の投稿を新しい順に見られる、ポータルの✎ボタン(スライド入力)からつぶやきを投稿できる、日記と夢日記の入力欄に「ポータルにも投稿」のスイッチ(初期はオフ)、記録の一覧に「ポータルへ」ボタン、自分の投稿を削除できる(管理者は全員分を削除できる)"],["変更","ポータルの投稿は記録のコピーとして独立していて、あとで記録を直してもポータル側は変わらない、予定は投稿できない、歴史の版の名前を整理(旧α4.1をα4.0b、旧α4.1aをα4.1に)"]]]]],["α4.3","IDログイン",[["α4.3","IDログイン",1,[["追加","IDとパスワードでログインする機能、ログイン画面の「Googleでログイン」の下にIDとパスワードの欄、設定のログインの中にパスワードの設定欄(Googleでログインしたあとに作る、8文字以上、あとから変更もできる)、別の端末でもGoogleを通さずに同じアカウントで入れる"],["変更","パスワードを忘れたときは、Googleでログインして設定から作り直す、設定のGoogle欄は、IDとパスワードでログインしているときは「IDとパスワードでログイン中」と表示"]]]]],["α4.4","ポータルの見た目",[["α4.4","ポータルの見た目",1,[["追加","投稿者ごとのアイコン(名前の最初の1文字、色はIDで決まる)、新着の投稿に「NEW」の印と「ここまで読みました」の線、下のタブの「ポータル」に新着の件数のバッジ、日記の投稿に記録の日付、長い日記は3行で折りたたんで「続きを読む」"],["変更","つぶやき(青)・日記(オレンジ)・夢日記(紫)で札とカード左端の色を分けた、自分の投稿は薄く色を付けて「あなた」と表示、ログインしている間は、ポータルを開いていなくても新しい投稿を読み込む"]]],["α4.4a","ポータルの読み込み",1,[["追加","夢日記のページを1日ずつ見られるようにした(◀ ▶と「今日」で日付を移る)、つぶやきと日記のページは最初に10件だけ読み込んで「もっと読み込む」で10件ずつ増やす"],["変更","ポータルの夢日記のページでは、✎のスライドボタンを出さないようにした、下のタブの新着バッジは前に見た時刻より新しい投稿だけを読み込んで数える、ポータルを開いている間だけ投稿を読み込む"]]],["α4.4b","反応と不具合直し",1,[["追加","ポータルのつぶやきと日記に「いいね」「シネシネ」「リプ」のボタン(押した数が出る、リプは返信の欄が開く、自分のリプは消せる)、夢日記は記録を1日1回までにした、管理者だけIDを設定で変えられて1文字から使えるようにした"],["変更","IDを変えたあとは、設定でパスワードをもう一度設定すると、新しいIDでログインできるようにした、ポータルに移ったときも上に残っていた小さなカレンダーを消すようにした、iPhoneでたまに反応しなかったスライド入力ボタンを直す予防を入れた、リプを入力している間は画面を作り直さないようにした"]]]]],["α4.5","ゾミカスダンジョンのチケット",[["α4.5","ゾミカスダンジョンのチケット",1,[["追加","ポータルに投稿すると、ゲーム「ゾミカスダンジョン」で使えるチケットのコードが1日1枚もらえる(投稿した直後に表示、コピーボタン付き、有効期限は約1か月)、設定に「ゾミカスダンジョンのチケット」の項目(もらったチケットを見返してコピーできる)、ゲームの専用リンク(?from=zomika または #zomika)から開いたときにチケットの説明を出す、夢日記の「ポータルにも投稿」にチェックを付けたときに内容を盛らないよう注意するポップアップ"],["変更","バックアップにもらったチケットも入れた"]]],["α4.5a","4.4・4.5の修整",1,[["変更","貨幣収集の券を「ガシャ券」の表記にして、日記・夢日記では出さず、貨幣収集の記録でだけもらえるようにした(いまある券はそのまま)、ポータルのいいね・シネシネのボタンを、👍と🖕の絵文字の下に小さく文字を入れる形に(押していないときは絵文字がグレー、押すと本来の色とアクセント色の枠になる)、リプのボタンを開いたときの色を薄くした"],["修正","設定で名前を変えたときに、ポータルの投稿とリプの名前にも使われるように、リプを送ったあと入力欄がすぐ空になるように、歴史欄にα4.5が出ていなかったのを直した、α4.4とα4.5を公開にした"]]],["α4.5b","ポータルの色とボタン",1,[["追加","自分の投稿にリプが来たときに、ポータルのタブに「リプ」の印を出して、アプリを開いているときは知らせるようにした(ほかの人の新着の印はそのまま)"],["変更","ポータルの色を、明るい水色寄りの青にした(ライトは背景#e0f5fd・アクセント#0a95c9)、いいね・シネシネのボタンは、数字が増えてもサイズが変わらないように数字の場所を最初からとった、ボタンの行に枠をつけた、ゾミカスダンジョンのチケットは、いったん出ないようにした(あとで戻せる)"]]]]]]]];
 let hd=false,_V;const VERS=()=>_V||(_V=JSON.parse(document.getElementById('vers').textContent));
 const PUB=p=>'<span class="pub '+(p?'p1">公開':'p0">非公開')+'</span>';
 const CH='<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--sub)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>';
@@ -1023,13 +1026,13 @@ function pbListen(){if(pbOff||pbInit||!pOK())return;const P=FB.db.ref('portal/po
   const cb=r.on('value',sn=>{pBD=[];sn.forEach(c=>{pBD.push({k:c.key,...c.val()})});pBadge()},()=>{});pbOff=()=>r.off('value',cb)}
 function pStopB(){if(pbOff){pbOff();pbOff=null}pBD=[]}
 function pSync(){if(!pOK()){pStopL();pStopD();pStopB();pData=[];pDD=[];pBD=[]}else{pbListen();if(tab==='portal'){if(pPg==='d'){pStopL();pdListen()}else{pStopD();pListen()}}else{pStopL();pStopD()}}
-  document.body.toggleAttribute('data-pgd',tab==='portal'&&pPg==='d');if(tab==='portal')pRender();pBadge()}
+  document.body.toggleAttribute('data-pgd',tab==='portal'&&pPg==='d');if(tab==='portal')pRender();pBadge();pnSync()}
 function pBadge(){try{const e=$('#pbd');if(!e)return;const n=(tab==='portal'||!pOK())?0:pBD.filter(p=>p.uid!==fbUser.uid&&(p.ts||0)>(mem.pseen||0)).length;e.hidden=!n;e.textContent=n>99?'99+':n;e.setAttribute('aria-label','新着'+n+'件')}catch(x){}}
 function pSeen(){try{const mx=[...pData,...pDD,...pBD].reduce((m,p)=>Math.max(m,p.ts||0),0);if(mx>(mem.pseen||0)){mem.pseen=mx;save();pStopB();pbListen()}}catch(x){}}
 function pTyping(){const a=document.activeElement;return !!(a&&a.classList&&a.classList.contains('prin'))}
 function pReact(k,f,on){if(!pOK())return;FB.db.ref('portal/posts/'+k+'/rx/'+fbUser.uid+'/'+f).set(on?true:null).catch(e=>toast('押せませんでした('+((e&&e.code)||'不明')+')'))}
 function pAct(p,me){const r=pEl('div','pact'),x=p.rx||{},cnt=f=>Object.values(x).filter(v=>v&&v[f]).length,mi=f=>!!(x[me]&&x[me][f]);
-  const mk=(lab,f,ic)=>{const n=cnt(f),on=mi(f),t=lab+(n?' '+n:''),b=pEl('button','pbt pr2'+(on?' on':'')),e=pEl('span','pe',ic),l=pEl('span','pl',t);e.setAttribute('aria-hidden','true');b.append(e,l);b.setAttribute('aria-label',t);b.setAttribute('aria-pressed',on?'true':'false');b.onclick=()=>pReact(p.k,f,!mi(f));return b};
+  const mk=(lab,f,ic)=>{const n=cnt(f),on=mi(f),ns=n>99?'99+':n?String(n):'',t=lab+(ns?' '+ns:''),b=pEl('button','pbt pr2'+(on?' on':'')),e=pEl('span','pe',ic),l=pEl('span','pl'),c=pEl('span','pn2');c.textContent=ns;l.append(lab,c);e.setAttribute('aria-hidden','true');b.append(e,l);b.setAttribute('aria-label',t);b.setAttribute('aria-pressed',on?'true':'false');b.onclick=()=>pReact(p.k,f,!mi(f));return b};
   const rc=p.rp?Object.keys(p.rp).length:0,rb=pEl('button','pbt'+(pOpen[p.k]?' on':''),'リプ'+(rc?' '+rc:''));rb.setAttribute('aria-expanded',pOpen[p.k]?'true':'false');rb.onclick=()=>{pOpen[p.k]=!pOpen[p.k];pRender()};
   r.append(mk('いいね','l','👍'),mk('シネシネ','s','🖕'),rb);return r}
 function pRp(p,me){const w=pEl('div','prp');
@@ -1208,6 +1211,7 @@ dp.addEventListener('pointerup',e=>{if(!ds)return;const dx=e.clientX-ds.x,dy=e.c
 dp.addEventListener('pointercancel',()=>{ds=null});
 
 /* ===== α4.5 ゾミカスダンジョン チケット ===== */
+const ZT_ON=false;/* ゾミカスダンジョンのチケット: true にすると、また出るようになる */
 const ZSEED='yFyjOzYHlXIYkmTKzonsdxrGbU_JmNbvRTE8j1bYmbA',ZEPOCH=Date.UTC(2026,0,1);
 const ZINFO='ゲーム「ゾミカスダンジョン」の「グリッチ戦」を10回遊べる権利';
 const ZHOW='使い方:ゲームのホーム画面で、「称号」の横の🎫ボタンを押して、このコードを貼り付けて「使う」を押してください。そのあと、同じ画面の「グリッチ戦に挑む」ボタンで遊べます。1枚につき1回だけ使えます。';
@@ -1255,6 +1259,7 @@ function zList(){
       b.appendChild(r)});
     const cl=zE('button','','閉じる');cl.type='button';cl.className='g';cl.onclick=zClose;b.appendChild(cl)})}
 async function zGive(){
+  if(!ZT_ON)return;
   try{
     const td=today();if(!mem.zt)mem.zt={};if(mem.zt[td])return;
     const code=await zIssue(1,30);
@@ -1269,6 +1274,7 @@ function zWarn(){
     const l2=zE('div','text-align:center'),r=zE('span','','面白く改変しないでください');r.className='r';l2.append(r,zE('span','','（面白くなくなるから）'));b.appendChild(l2);
     const ok=zE('button','display:block;margin:14px auto 0','OK');ok.type='button';ok.onclick=zClose;b.appendChild(ok)})}
 function zBanner(){
+  if(!ZT_ON)return;
   let f=false;try{f=/(^|[?&])from=zomika(&|$)/.test(location.search)||location.hash==='#zomika'}catch(e){}
   if(!f)return;
   const d=zE('div');d.className='zbn';d.setAttribute('role','status');
@@ -1279,7 +1285,28 @@ function zBanner(){
   d.append(a,c);document.body.appendChild(d)}
 $('#ptg').addEventListener('change',()=>{if($('#ptg').checked&&tab==='dream')zWarn()});
 $('#ztb').onclick=zList;
+if(!ZT_ON){const c=$('#ztb').closest('.hcd');if(c)c.style.display='none'}
 zBanner();
+
+/* ===== α4.5b リプの通知(自分の投稿にリプが来たときだけ) ===== */
+var pnOff=null,pnRL=[],pnFirst=true,pnLast=0;
+function pnMax(){return pnRL.reduce((a,x)=>Math.max(a,x.ts),0)}
+function pnBadge(){try{const e=$('#prb');if(!e)return;const n=(tab==='portal'||!pOK())?0:pnRL.filter(x=>x.ts>(mem.prs||0)).length;e.hidden=!n;e.textContent='リプ'+(n>99?'99+':n);e.setAttribute('aria-label','リプ'+n+'件')}catch(x){}}
+function pnMark(){const m=pnMax();if(m>(mem.prs||0)){mem.prs=m;save()}}
+function pnStop(){if(pnOff){pnOff();pnOff=null}pnRL=[];pnFirst=true;pnBadge()}
+function pnSync(){if(!pOK()){pnStop();return}pnListen();if(tab==='portal')pnMark();pnBadge()}
+function pnListen(){
+  if(pnOff||!pOK())return;
+  const r=FB.db.ref('portal/posts').orderByChild('ts').limitToLast(100);
+  const cb=r.on('value',sn=>{
+    const me=fbUser.uid,L=[];
+    sn.forEach(c=>{const p=c.val();if(!p||p.uid!==me||!p.rp)return;Object.keys(p.rp).forEach(k=>{const x=p.rp[k];if(x&&x.uid!==me&&x.ts)L.push({name:x.name||'',ts:x.ts})})});
+    pnRL=L;const mx=pnMax();
+    if(pnFirst){pnFirst=false;if(mem.prs==null){mem.prs=mx;save()}pnLast=mx}
+    else{const fr=L.filter(x=>x.ts>pnLast);if(fr.length){pnLast=mx;if(tab!=='portal')toast(fr.length===1?(fr[0].name||'だれか')+'さんからリプが届きました':'リプが'+fr.length+'件届きました')}}
+    if(tab==='portal')pnMark();
+    pnBadge()},()=>{});
+  pnOff=()=>r.off('value',cb)}
 show();save();
 </script>
 </body>
