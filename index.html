@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>日記アプリ(仮版)α4.5b</title>
+<title>日記アプリ(仮版)α4.5c</title>
 <link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
 :root{--gray:#eef0f3;--card:#fff;--ink:#1d2330;--sub:#6b7385;--line:#e1e4ea;--sun:#d0475a;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
@@ -223,8 +223,7 @@ body[data-tab="coin"] #dayp{order:2}
 .ptg{display:flex;align-items:center;gap:8px;margin:10px 0 0;font-size:14px;min-height:44px}.ptg input{width:22px;height:22px;accent-color:var(--a)}
 #portalUI{padding:8px 0 90px}#plist .entry{background:var(--card);border:0;border-radius:12px;padding:10px 12px;margin-top:10px}.pt{margin-left:auto;font-size:11px;padding:2px 8px;border-radius:999px;background:var(--bg);color:var(--a);white-space:nowrap}#plist .act{margin-left:0}.pm{font-size:12px;color:var(--sub)}
 .pc{display:flex;gap:10px;background:var(--card);border-radius:12px;padding:10px 12px;margin-top:9px;border-left:5px solid var(--c)}
-.pc.t{--c:#2563a0}.pc.d{--c:#c4621a}.pc.m{--c:#7a56c9}
-.pc.me{background:color-mix(in srgb,var(--c) 7%,var(--card))}
+.pc.t{--c:#0a95c9}.pc.d{--c:#c4621a}.pc.m{--c:#7a56c9}
 .pav{flex:none;width:38px;height:38px;border-radius:50%;background:var(--pc);color:#fff;font-weight:700;font-size:16px;display:flex;align-items:center;justify-content:center}
 .pbd2{min-width:0;flex:1}
 .pmt{display:flex;align-items:center;flex-wrap:wrap;gap:2px 6px;font-size:12px;color:var(--sub)}.pmt b{font-size:14px;color:var(--ink)}
@@ -232,6 +231,8 @@ body[data-tab="coin"] #dayp{order:2}
 .ptg2{margin-left:auto;font-size:11px;padding:2px 8px;border-radius:10px;background:color-mix(in srgb,var(--c) 15%,var(--card));color:color-mix(in srgb,var(--c) 70%,var(--ink));white-space:nowrap}
 .pdl{border:0;background:none;font-size:10px;color:var(--sub);padding:4px 0;min-height:28px}
 .pdt{margin:2px 0 0;font-size:12px;font-weight:700;color:color-mix(in srgb,var(--c) 70%,var(--ink))}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .pc{background:#1b3a48}:root:not([data-theme="light"]) .pc.t{--c:#4fd0f0}:root:not([data-theme="light"]) .pc.d{--c:#f0a066}:root:not([data-theme="light"]) .pc.m{--c:#a98ae8}}
+:root[data-theme="dark"] .pc{background:#1b3a48}:root[data-theme="dark"] .pc.t{--c:#4fd0f0}:root[data-theme="dark"] .pc.d{--c:#f0a066}:root[data-theme="dark"] .pc.m{--c:#a98ae8}
 .ptx{margin:4px 0 0;line-height:1.6;white-space:pre-wrap;overflow-wrap:anywhere}
 .ptx.pcl{display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
 .pmore{border:0;background:none;color:var(--c);font-size:12px;padding:4px 0;min-height:32px}
@@ -242,18 +243,20 @@ body[data-pgd] #fab{display:none!important}
 .pnv{display:flex;align-items:center;gap:8px;margin-top:10px}.pnv span{flex:1;text-align:center;font-weight:700}
 .pnv button{min-width:44px;min-height:44px;border:0;border-radius:10px;background:var(--card);color:var(--ink);font:inherit}.pnv button:disabled{opacity:.4}
 .pmr{display:block;width:100%;min-height:46px;margin-top:12px;border:0;border-radius:12px;background:var(--card);color:var(--a);font:inherit;font-weight:700}
-.pact{display:flex;gap:6px;margin-top:6px;flex-wrap:wrap;padding:4px;border:1px solid var(--line);border-radius:14px}
+.pact{display:flex;gap:4px;margin-top:6px;flex-wrap:nowrap;padding:3px;border:1px solid var(--line);border-radius:12px}
+.pact .pbt{flex:0 1 auto;min-width:0}
 .pbt{min-height:36px;padding:0 12px;border:1px solid var(--line);border-radius:999px;background:var(--card);color:var(--ink);font:inherit;font-size:12px}
 .pbt.on{background:color-mix(in srgb,var(--a) 10%,var(--card));border-color:var(--a);color:var(--a);font-weight:700}
-.pbt.pr2{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0;padding:2px 12px;line-height:1.1}
-.pbt.pr2 .pe{font-size:15px;line-height:1;filter:grayscale(1);opacity:.6}
-.pbt.pr2 .pl{font-size:9.5px;line-height:1.2;color:var(--sub);font-weight:400;white-space:nowrap}
-.pbt.pr2 .pn2{display:inline-block;min-width:3ch;text-align:left;margin-left:2px;font-variant-numeric:tabular-nums}
+.pbt.pr2{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px;padding:2px 8px;line-height:1.1;color:var(--sub);font-weight:400;background:transparent}
+.pbt.pr2 .pe{display:flex;align-items:center;gap:2px;font-size:11px;line-height:1;color:var(--sub)}
+.pbt.pr2 .pe svg{width:14px;height:14px;display:block}
+.pbt.pr2 .pbl{font-size:11px;line-height:1.1;color:var(--sub);font-weight:400;white-space:nowrap}
+.pbt.pr2 .pn2{display:inline-block;min-width:2ch;text-align:left;font-variant-numeric:tabular-nums}
 .tabs button[data-t="portal"]{position:relative}
 #prb{position:absolute;top:2px;right:4px;margin:0}
-.pbt.pr2.on{background:var(--card);border-color:var(--a);font-weight:400}
-.pbt.pr2.on .pe{filter:none;opacity:1}
-.pbt.pr2.on .pl{color:var(--a);font-weight:700}
+.pbt.pr2.on{background:transparent;border-color:var(--a);color:var(--a);font-weight:400}
+.pbt.pr2.on .pe{color:var(--a)}
+.pbt.pr2.on .pbl{color:var(--a);font-weight:500}
 .prp{margin-top:8px;padding-top:6px;border-top:1px solid var(--line)}.prr{margin-top:6px;font-size:13px;overflow-wrap:anywhere}.prr .m{font-size:11px;color:var(--sub)}
 .prf{display:flex;gap:6px;margin-top:8px}.prin{flex:1;min-width:0;min-height:40px;border:1px solid var(--line);border-radius:10px;padding:0 10px;font:inherit;font-size:16px;background:var(--card);color:var(--ink)}
 .prs{min-height:40px;padding:0 14px;border:0;border-radius:10px;background:var(--a);color:var(--card);font:inherit;font-weight:700}
@@ -317,7 +320,7 @@ body[data-pgd] #fab{display:none!important}
     <div id="tkrow" style="display:flex;align-items:center;gap:8px;margin-bottom:6px"><span class="st" id="tkl"></span></div>
     <div id="list"></div>
   </div>
-<p class="ver" style="text-align:center;font-size:12px;color:var(--sub)">α4.5b</p>
+<p class="ver" style="text-align:center;font-size:12px;color:var(--sub)">α4.5c</p>
 </section>
 <section id="portalUI" hidden>
   <div class="seg" id="pseg"><button data-pg="a" class="on">つぶやきと日記</button><button data-pg="d">夢日記</button></div>
@@ -948,7 +951,7 @@ S('α3.1','修整',0,[['変更','その他欄の中をボタンで項目分け�
 ['α3.3c','解説の追加',0,[['追加','硬貨ガシャの年号ごとの解説(レアでない年号も含む)'],['変更','紙幣ガシャを、使えないメンテナンス中の表示に'],['変更','歴史欄のタイトルを短く整理'],['追加','歴史欄のα2.0に、旧α1.3の説明']]],
 ['α3.3d','額面別ガシャ',0,[['追加','額面別の硬貨ガシャ(券2枚、「額面別」を押すと出るポップアップで額面を選ぶ)'],['変更','硬貨タブのガシャを「貨幣ガシャ」の1ボタンに、ガシャ画面のバーで種類を選ぶ形に'],['変更','券の無制限をやめて、券の配布(5億枚)に'],['変更','図鑑の額面を小さい順に、最初は1円で、前に開いた額面を覚える'],['変更','解説の見出しを「500円 平成12年について」の形に']]]]],
 S('α3.4','パスコードで開放',0,[['追加','プ流不ボタンを押すとリボンメッセージ「プ流不入手!」が出る、パスコード「coin」で硬貨タブと貨幣の解説が開く、パスコード「history」で歴史が開く、一度開いたものはそのまま開いたままになる'],['変更','硬貨タブと貨幣の解説と歴史を最初は隠した状態に、これまでに使っていた人は開いた状態のまま引き継ぐ、パスコードを大文字・小文字の区別なしに、「Zomikasu」の表記を「zomikasu」に']])]],
-["α4.0台","ログインと共有",[["α4.0","ログインとパスコード",[["α4.0","ログインとパスコード",0,[["追加","その他欄に「ログイン」の項目、ログインコードを貼ってログインしてログアウトするまでログイン画面を出さない、ログインのときに共有先のリポジトリが非公開かどうかを確かめる"],["変更","パスコードを設定の中から出して歴史や設定と同じ並びの独立した項目に、夢日記と貨幣収集のカレンダーで今の月より先へ進めないように"]]],["α4.0a","ログイン画面を最初に",1,[["追加","GitHub Pagesで開いたときにアプリを開くと最初にログイン画面が出てログインしたあとに日記などのページへ移る、パスコードの入力欄をその他欄の一覧の一番下に直接置く、設定にログイン中の表示とログアウトボタンを追加"],["変更","その他欄の「ログイン」の項目を設定の中のログアウトにまとめる、バックアップを設定の一番下に移動、パスコードの項目をやめて入力欄だけに"]]],["α4.0b","メール登録と承認",1,[["追加","GitHub Pagesで開くとメールアドレスとパスワードのログイン画面が出る、新規登録は名前と合言葉を入れて承認待ちになる、管理者が設定の中のメンバーの承認で承認と取り消しをする、パスワードを忘れたときの再設定メール、一度ログインすると通信がなくても開ける"],["変更","ログインコードによるログインをやめてFirebaseのアカウントに切り替え、Firebaseの設定が未入力のときはログイン画面を出さない"]],"旧α4.1"]]],["α4.1","Googleでログイン",[["α4.1","Googleでログイン",1,[["追加","Googleアカウントでログインする、初めての人は名前とIDと合言葉で登録する、IDは英字・数字・_ の2〜16文字で重複しない、承認の一覧にIDとGoogleのメールを表示する、データの置き場所をRealtime Databaseにして設定を入れた"],["変更","メールアドレスとパスワードによるログインをやめた、ログイン中は設定のIDが登録したIDに固定される"]],"旧α4.1a"]]],["α4.2","ポータル",[["α4.2","ポータル",1,[["追加","ポータルのタブ(一番左・青色)、[つぶやきと日記]と[夢日記]の2ページで承認済みの人の投稿を新しい順に見られる、ポータルの✎ボタン(スライド入力)からつぶやきを投稿できる、日記と夢日記の入力欄に「ポータルにも投稿」のスイッチ(初期はオフ)、記録の一覧に「ポータルへ」ボタン、自分の投稿を削除できる(管理者は全員分を削除できる)"],["変更","ポータルの投稿は記録のコピーとして独立していて、あとで記録を直してもポータル側は変わらない、予定は投稿できない、歴史の版の名前を整理(旧α4.1をα4.0b、旧α4.1aをα4.1に)"]]]]],["α4.3","IDログイン",[["α4.3","IDログイン",1,[["追加","IDとパスワードでログインする機能、ログイン画面の「Googleでログイン」の下にIDとパスワードの欄、設定のログインの中にパスワードの設定欄(Googleでログインしたあとに作る、8文字以上、あとから変更もできる)、別の端末でもGoogleを通さずに同じアカウントで入れる"],["変更","パスワードを忘れたときは、Googleでログインして設定から作り直す、設定のGoogle欄は、IDとパスワードでログインしているときは「IDとパスワードでログイン中」と表示"]]]]],["α4.4","ポータルの見た目",[["α4.4","ポータルの見た目",1,[["追加","投稿者ごとのアイコン(名前の最初の1文字、色はIDで決まる)、新着の投稿に「NEW」の印と「ここまで読みました」の線、下のタブの「ポータル」に新着の件数のバッジ、日記の投稿に記録の日付、長い日記は3行で折りたたんで「続きを読む」"],["変更","つぶやき(青)・日記(オレンジ)・夢日記(紫)で札とカード左端の色を分けた、自分の投稿は薄く色を付けて「あなた」と表示、ログインしている間は、ポータルを開いていなくても新しい投稿を読み込む"]]],["α4.4a","ポータルの読み込み",1,[["追加","夢日記のページを1日ずつ見られるようにした(◀ ▶と「今日」で日付を移る)、つぶやきと日記のページは最初に10件だけ読み込んで「もっと読み込む」で10件ずつ増やす"],["変更","ポータルの夢日記のページでは、✎のスライドボタンを出さないようにした、下のタブの新着バッジは前に見た時刻より新しい投稿だけを読み込んで数える、ポータルを開いている間だけ投稿を読み込む"]]],["α4.4b","反応と不具合直し",1,[["追加","ポータルのつぶやきと日記に「いいね」「シネシネ」「リプ」のボタン(押した数が出る、リプは返信の欄が開く、自分のリプは消せる)、夢日記は記録を1日1回までにした、管理者だけIDを設定で変えられて1文字から使えるようにした"],["変更","IDを変えたあとは、設定でパスワードをもう一度設定すると、新しいIDでログインできるようにした、ポータルに移ったときも上に残っていた小さなカレンダーを消すようにした、iPhoneでたまに反応しなかったスライド入力ボタンを直す予防を入れた、リプを入力している間は画面を作り直さないようにした"]]]]],["α4.5","ゾミカスダンジョンのチケット",[["α4.5","ゾミカスダンジョンのチケット",1,[["追加","ポータルに投稿すると、ゲーム「ゾミカスダンジョン」で使えるチケットのコードが1日1枚もらえる(投稿した直後に表示、コピーボタン付き、有効期限は約1か月)、設定に「ゾミカスダンジョンのチケット」の項目(もらったチケットを見返してコピーできる)、ゲームの専用リンク(?from=zomika または #zomika)から開いたときにチケットの説明を出す、夢日記の「ポータルにも投稿」にチェックを付けたときに内容を盛らないよう注意するポップアップ"],["変更","バックアップにもらったチケットも入れた"]]],["α4.5a","4.4・4.5の修整",1,[["変更","貨幣収集の券を「ガシャ券」の表記にして、日記・夢日記では出さず、貨幣収集の記録でだけもらえるようにした(いまある券はそのまま)、ポータルのいいね・シネシネのボタンを、👍と🖕の絵文字の下に小さく文字を入れる形に(押していないときは絵文字がグレー、押すと本来の色とアクセント色の枠になる)、リプのボタンを開いたときの色を薄くした"],["修正","設定で名前を変えたときに、ポータルの投稿とリプの名前にも使われるように、リプを送ったあと入力欄がすぐ空になるように、歴史欄にα4.5が出ていなかったのを直した、α4.4とα4.5を公開にした"]]],["α4.5b","ポータルの色とボタン",1,[["追加","自分の投稿にリプが来たときに、ポータルのタブに「リプ」の印を出して、アプリを開いているときは知らせるようにした(ほかの人の新着の印はそのまま)"],["変更","ポータルの色を、明るい水色寄りの青にした(ライトは背景#e0f5fd・アクセント#0a95c9)、いいね・シネシネのボタンは、数字が増えてもサイズが変わらないように数字の場所を最初からとった、ボタンの行に枠をつけた、ゾミカスダンジョンのチケットは、いったん出ないようにした(あとで戻せる)"]]]]]]]];
+["α4.0台","ログインと共有",[["α4.0","ログインとパスコード",[["α4.0","ログインとパスコード",0,[["追加","その他欄に「ログイン」の項目、ログインコードを貼ってログインしてログアウトするまでログイン画面を出さない、ログインのときに共有先のリポジトリが非公開かどうかを確かめる"],["変更","パスコードを設定の中から出して歴史や設定と同じ並びの独立した項目に、夢日記と貨幣収集のカレンダーで今の月より先へ進めないように"]]],["α4.0a","ログイン画面を最初に",1,[["追加","GitHub Pagesで開いたときにアプリを開くと最初にログイン画面が出てログインしたあとに日記などのページへ移る、パスコードの入力欄をその他欄の一覧の一番下に直接置く、設定にログイン中の表示とログアウトボタンを追加"],["変更","その他欄の「ログイン」の項目を設定の中のログアウトにまとめる、バックアップを設定の一番下に移動、パスコードの項目をやめて入力欄だけに"]]],["α4.0b","メール登録と承認",1,[["追加","GitHub Pagesで開くとメールアドレスとパスワードのログイン画面が出る、新規登録は名前と合言葉を入れて承認待ちになる、管理者が設定の中のメンバーの承認で承認と取り消しをする、パスワードを忘れたときの再設定メール、一度ログインすると通信がなくても開ける"],["変更","ログインコードによるログインをやめてFirebaseのアカウントに切り替え、Firebaseの設定が未入力のときはログイン画面を出さない"]],"旧α4.1"]]],["α4.1","Googleでログイン",[["α4.1","Googleでログイン",1,[["追加","Googleアカウントでログインする、初めての人は名前とIDと合言葉で登録する、IDは英字・数字・_ の2〜16文字で重複しない、承認の一覧にIDとGoogleのメールを表示する、データの置き場所をRealtime Databaseにして設定を入れた"],["変更","メールアドレスとパスワードによるログインをやめた、ログイン中は設定のIDが登録したIDに固定される"]],"旧α4.1a"]]],["α4.2","ポータル",[["α4.2","ポータル",1,[["追加","ポータルのタブ(一番左・青色)、[つぶやきと日記]と[夢日記]の2ページで承認済みの人の投稿を新しい順に見られる、ポータルの✎ボタン(スライド入力)からつぶやきを投稿できる、日記と夢日記の入力欄に「ポータルにも投稿」のスイッチ(初期はオフ)、記録の一覧に「ポータルへ」ボタン、自分の投稿を削除できる(管理者は全員分を削除できる)"],["変更","ポータルの投稿は記録のコピーとして独立していて、あとで記録を直してもポータル側は変わらない、予定は投稿できない、歴史の版の名前を整理(旧α4.1をα4.0b、旧α4.1aをα4.1に)"]]]]],["α4.3","IDログイン",[["α4.3","IDログイン",1,[["追加","IDとパスワードでログインする機能、ログイン画面の「Googleでログイン」の下にIDとパスワードの欄、設定のログインの中にパスワードの設定欄(Googleでログインしたあとに作る、8文字以上、あとから変更もできる)、別の端末でもGoogleを通さずに同じアカウントで入れる"],["変更","パスワードを忘れたときは、Googleでログインして設定から作り直す、設定のGoogle欄は、IDとパスワードでログインしているときは「IDとパスワードでログイン中」と表示"]]]]],["α4.4","ポータルの見た目",[["α4.4","ポータルの見た目",1,[["追加","投稿者ごとのアイコン(名前の最初の1文字、色はIDで決まる)、新着の投稿に「NEW」の印と「ここまで読みました」の線、下のタブの「ポータル」に新着の件数のバッジ、日記の投稿に記録の日付、長い日記は3行で折りたたんで「続きを読む」"],["変更","つぶやき(青)・日記(オレンジ)・夢日記(紫)で札とカード左端の色を分けた、自分の投稿は薄く色を付けて「あなた」と表示、ログインしている間は、ポータルを開いていなくても新しい投稿を読み込む"]]],["α4.4a","ポータルの読み込み",1,[["追加","夢日記のページを1日ずつ見られるようにした(◀ ▶と「今日」で日付を移る)、つぶやきと日記のページは最初に10件だけ読み込んで「もっと読み込む」で10件ずつ増やす"],["変更","ポータルの夢日記のページでは、✎のスライドボタンを出さないようにした、下のタブの新着バッジは前に見た時刻より新しい投稿だけを読み込んで数える、ポータルを開いている間だけ投稿を読み込む"]]],["α4.4b","反応と不具合直し",1,[["追加","ポータルのつぶやきと日記に「いいね」「シネシネ」「リプ」のボタン(押した数が出る、リプは返信の欄が開く、自分のリプは消せる)、夢日記は記録を1日1回までにした、管理者だけIDを設定で変えられて1文字から使えるようにした"],["変更","IDを変えたあとは、設定でパスワードをもう一度設定すると、新しいIDでログインできるようにした、ポータルに移ったときも上に残っていた小さなカレンダーを消すようにした、iPhoneでたまに反応しなかったスライド入力ボタンを直す予防を入れた、リプを入力している間は画面を作り直さないようにした"]]]]],["α4.5","ゾミカスダンジョンのチケット",[["α4.5","ゾミカスダンジョンのチケット",1,[["追加","ポータルに投稿すると、ゲーム「ゾミカスダンジョン」で使えるチケットのコードが1日1枚もらえる(投稿した直後に表示、コピーボタン付き、有効期限は約1か月)、設定に「ゾミカスダンジョンのチケット」の項目(もらったチケットを見返してコピーできる)、ゲームの専用リンク(?from=zomika または #zomika)から開いたときにチケットの説明を出す、夢日記の「ポータルにも投稿」にチェックを付けたときに内容を盛らないよう注意するポップアップ"],["変更","バックアップにもらったチケットも入れた"]]],["α4.5a","4.4・4.5の修整",1,[["変更","貨幣収集の券を「ガシャ券」の表記にして、日記・夢日記では出さず、貨幣収集の記録でだけもらえるようにした(いまある券はそのまま)、ポータルのいいね・シネシネのボタンを、👍と🖕の絵文字の下に小さく文字を入れる形に(押していないときは絵文字がグレー、押すと本来の色とアクセント色の枠になる)、リプのボタンを開いたときの色を薄くした"],["修正","設定で名前を変えたときに、ポータルの投稿とリプの名前にも使われるように、リプを送ったあと入力欄がすぐ空になるように、歴史欄にα4.5が出ていなかったのを直した、α4.4とα4.5を公開にした"]]],["α4.5b","ポータルの色とボタン",1,[["追加","自分の投稿にリプが来たときに、ポータルのタブに「リプ」の印を出して、アプリを開いているときは知らせるようにした(ほかの人の新着の印はそのまま)"],["変更","ポータルの色を、明るい水色寄りの青にした(ライトは背景#e0f5fd・アクセント#0a95c9)、いいね・シネシネのボタンは、数字が増えてもサイズが変わらないように数字の場所を最初からとった、ボタンの行に枠をつけた、ゾミカスダンジョンのチケットは、いったん出ないようにした(あとで戻せる)"]]],["α4.5c","ボタンと見やすさ",1,[["変更","いいね・シネシネ・リプのボタンを、白黒の線のアイコンと数字を横に並べて下に小さく名前を入れる形にした(余白を小さくして、1行に収まるように)、リプのボタンにも吹き出しのアイコンをつけた、自分の投稿だけを染める表示をやめた、ポータルのダークモードで、投稿のカードを少し明るくして、左の線の色も明るくした"]]]]]]]];
 let hd=false,_V;const VERS=()=>_V||(_V=JSON.parse(document.getElementById('vers').textContent));
 const PUB=p=>'<span class="pub '+(p?'p1">公開':'p0">非公開')+'</span>';
 const CH='<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--sub)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>';
@@ -1031,10 +1034,12 @@ function pBadge(){try{const e=$('#pbd');if(!e)return;const n=(tab==='portal'||!p
 function pSeen(){try{const mx=[...pData,...pDD,...pBD].reduce((m,p)=>Math.max(m,p.ts||0),0);if(mx>(mem.pseen||0)){mem.pseen=mx;save();pStopB();pbListen()}}catch(x){}}
 function pTyping(){const a=document.activeElement;return !!(a&&a.classList&&a.classList.contains('prin'))}
 function pReact(k,f,on){if(!pOK())return;FB.db.ref('portal/posts/'+k+'/rx/'+fbUser.uid+'/'+f).set(on?true:null).catch(e=>toast('押せませんでした('+((e&&e.code)||'不明')+')'))}
+function pIcon(k){const P={u:'<path d="M7 11v8a1 1 0 0 1 -1 1h-2a1 1 0 0 1 -1 -1v-7a1 1 0 0 1 1 -1h3a4 4 0 0 0 4 -4v-1a2 2 0 0 1 4 0v5h3a2 2 0 0 1 2 2l-1 5a2 3 0 0 1 -2 2h-7a3 3 0 0 1 -3 -3"/>',m:'<path d="M8 13v-2.5a1.5 1.5 0 0 1 3 0v1"/><path d="M11 11.5v-7a1.5 1.5 0 0 1 3 0v7.5"/><path d="M14 10.5a1.5 1.5 0 0 1 3 0v1.5"/><path d="M17 11.5a1.5 1.5 0 0 1 3 0v4.5a6 6 0 0 1 -6 6h-2h.208a6 6 0 0 1 -5.012 -2.7a69.74 69.74 0 0 1 -.196 -.3c-.312 -.479 -1.407 -2.388 -3.286 -5.728a1.5 1.5 0 0 1 .536 -2.022a1.867 1.867 0 0 1 2.28 .28l1.47 1.47"/>',r:'<path d="M8 9h8"/><path d="M8 13h6"/><path d="M18 4a3 3 0 0 1 3 3v8a3 3 0 0 1 -3 3h-5l-5 3v-3h-2a3 3 0 0 1 -3 -3v-8a3 3 0 0 1 3 -3h12z"/>'};return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'+P[k]+'</svg>'}
+function pBtn(on,ic,lab,n){const ns=n>99?'99':n?String(n):'',b=pEl('button','pbt pr2'+(on?' on':'')),e=pEl('span','pe'),c=pEl('span','pn2',ns),l=pEl('span','pbl',lab);e.innerHTML=pIcon(ic);e.appendChild(c);b.append(e,l);b.setAttribute('aria-label',lab+(ns?' '+ns:''));return b}
 function pAct(p,me){const r=pEl('div','pact'),x=p.rx||{},cnt=f=>Object.values(x).filter(v=>v&&v[f]).length,mi=f=>!!(x[me]&&x[me][f]);
-  const mk=(lab,f,ic)=>{const n=cnt(f),on=mi(f),ns=n>99?'99+':n?String(n):'',t=lab+(ns?' '+ns:''),b=pEl('button','pbt pr2'+(on?' on':'')),e=pEl('span','pe',ic),l=pEl('span','pl'),c=pEl('span','pn2');c.textContent=ns;l.append(lab,c);e.setAttribute('aria-hidden','true');b.append(e,l);b.setAttribute('aria-label',t);b.setAttribute('aria-pressed',on?'true':'false');b.onclick=()=>pReact(p.k,f,!mi(f));return b};
-  const rc=p.rp?Object.keys(p.rp).length:0,rb=pEl('button','pbt'+(pOpen[p.k]?' on':''),'リプ'+(rc?' '+rc:''));rb.setAttribute('aria-expanded',pOpen[p.k]?'true':'false');rb.onclick=()=>{pOpen[p.k]=!pOpen[p.k];pRender()};
-  r.append(mk('いいね','l','👍'),mk('シネシネ','s','🖕'),rb);return r}
+  const mk=(lab,f,ic)=>{const n=cnt(f),on=mi(f),b=pBtn(on,ic,lab,n);b.setAttribute('aria-pressed',on?'true':'false');b.onclick=()=>pReact(p.k,f,!mi(f));return b};
+  const rc=p.rp?Object.keys(p.rp).length:0,rb=pBtn(!!pOpen[p.k],'r','リプ',rc);rb.setAttribute('aria-expanded',pOpen[p.k]?'true':'false');rb.onclick=()=>{pOpen[p.k]=!pOpen[p.k];pRender()};
+  r.append(mk('いいね','l','u'),mk('シネシネ','s','m'),rb);return r}
 function pRp(p,me){const w=pEl('div','prp');
   Object.entries(p.rp||{}).map(([rk,v])=>({rk,...v})).sort((a,b)=>(a.ts||0)-(b.ts||0)).forEach(r=>{const d=pEl('div','prr');
     d.append(pEl('div','m',(r.name||r.id||'?')+' @'+(r.id||'')+' ・ '+pTm(r.ts)),pEl('div','',r.text||''));
