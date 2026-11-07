@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>日記アプリ(仮版)α4.6f</title>
+<title>日記アプリ(仮版)α4.7</title>
 <link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
 :root{--gray:#eef0f3;--card:#fff;--ink:#1d2330;--sub:#6b7385;--line:#e1e4ea;--sun:#d0475a;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
@@ -318,7 +318,18 @@ body{overflow-x:clip}
 @keyframes gcg{0%{box-shadow:0 0 0 rgba(10,149,201,0)}100%{box-shadow:0 0 28px 6px var(--a)}}
 #gz.gsh{animation:gsh .4s}
 @keyframes gsh{0%,100%{transform:none}20%{transform:translateX(-5px)}40%{transform:translateX(5px)}60%{transform:translateX(-3px)}80%{transform:translateX(3px)}}
-.pc{position:relative}.pmt{padding-right:30px}.pmt .pmn{position:absolute;top:4px;right:4px}
+.pmt{display:flex;align-items:center;gap:6px;flex-wrap:nowrap}
+.pml{flex:1;min-width:0;display:flex;align-items:baseline;gap:6px;overflow:hidden}
+.pml>b{flex:0 1 auto;max-width:55%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.pml .pid{flex:0 1 auto;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:var(--sub);font-size:12px}
+.pml .pnew,.pml .bwb,.pml .ped{flex:none}
+.pmr{display:flex;align-items:center;gap:6px;flex:none;white-space:nowrap;font-size:12px;color:var(--sub)}
+.pmr .ptg2{margin-left:0}
+.prr{position:relative;padding-right:34px}.prr .pmn{position:absolute;top:2px;right:0}
+.ptl{position:absolute;left:0;top:2px;font-size:14px;font-weight:700;color:var(--a);background:color-mix(in srgb,var(--a) 14%,var(--card));border-radius:10px;padding:6px 14px}
+.btag{position:absolute;left:50%;top:-12px;transform:translateX(-50%);font-size:11px;font-weight:500;color:#fff;background:#c0384e;border-radius:8px;padding:2px 10px;white-space:nowrap}
+#dfx{display:flex;flex-direction:column;gap:8px;margin-top:10px}
+.dfr{display:flex;align-items:center;gap:8px}.dfr label{flex:none;width:2.6em;font-size:13px;color:var(--sub)}.dfr input{flex:1;min-width:0}
 .bv{text-align:left}.bvA{display:flex;align-items:center;gap:8px}
 .bvn{font-size:26px;font-weight:700;color:var(--a);letter-spacing:1px;flex:1;min-width:0;text-align:left}
 .bvA .bdg{margin-left:0;flex:none}
@@ -333,7 +344,7 @@ body{overflow-x:clip}
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><linearGradient id="mgF" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff6c4"/><stop offset=".2" stop-color="#f4d15f"/><stop offset=".48" stop-color="#c8951d"/><stop offset=".62" stop-color="#e9bd47"/><stop offset=".86" stop-color="#fbe48f"/><stop offset="1" stop-color="#b98419"/></linearGradient><linearGradient id="mgT" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#e2b84f"/><stop offset=".5" stop-color="#a97612"/><stop offset="1" stop-color="#8a5c0b"/></linearGradient></defs></svg>
 <div class="pin" id="pin" inert><div><b id="pt"></b><div class="grid" id="pcal"></div></div></div>
 <main>
-<div style="height:36px"><button class="gearb" id="gear" aria-label="その他を開く">⚙<span class="nd" id="gnd" hidden></span></button></div>
+<div style="height:36px;position:relative"><span class="ptl" id="ptl">日記</span><button class="gearb" id="gear" aria-label="その他を開く">⚙<span class="nd" id="gnd" hidden></span></button></div>
 <div id="warn" class="note" hidden>この環境ではブラウザ保存が使えないため、閉じると内容が消えます。</div>
 <section id="diaryUI">
   <div class="card" id="calcard">
@@ -372,10 +383,10 @@ body{overflow-x:clip}
     <div id="tkrow" style="display:flex;align-items:center;gap:8px;margin-bottom:6px"><span class="st" id="tkl"></span></div>
     <div id="list"></div>
   </div>
-<p class="ver" style="text-align:center;font-size:12px;color:var(--sub)">α4.6f</p>
+<p class="ver" style="text-align:center;font-size:12px;color:var(--sub)">α4.7</p>
 </section>
 <section id="portalUI" hidden>
-  <div id="pwrap"><div class="seg" id="pseg"><button data-pg="a" class="on">つぶやきと日記</button><button data-pg="d" style="position:relative">夢日記<span id="bTab" class="bdg" hidden style="position:absolute;top:-9px;right:8px;margin:0"></span></button></div>
+  <div id="pwrap"><div class="seg" id="pseg"><button data-pg="a" class="on">つぶやきと日記</button><button data-pg="d" style="position:relative">夢日記<span id="bTab" class="btag" hidden></span></button></div>
   <div id="bnr"></div></div><div id="bbig"></div><div class="pnv" id="pnav" hidden><button id="pnp" aria-label="前の日">◀</button><span id="pnl"></span><button id="pnn" aria-label="次の日">▶</button><button id="pnt">今日</button></div>
   <div class="note" id="pmsg" style="margin-top:10px"></div><div id="plist"></div>
 </section>
@@ -387,6 +398,7 @@ body{overflow-x:clip}
     <div class="pb" id="pb">
       <div class="mood" id="mood" hidden><small>朝の体調</small></div>
       <div id="dwrap"><textarea id="ta" aria-label="本文"></textarea></div>
+      <div id="dfx" hidden><div class="dfr"><label for="dpl">場所</label><input class="prin" id="dpl" type="text" maxlength="40" placeholder="どこだった?"></div><div class="dfr"><label for="dst">状況</label><input class="prin" id="dst" type="text" maxlength="60" placeholder="何をしていた?"></div></div>
       <label class="ptg" id="ptgw" hidden><input type="checkbox" id="ptg"><span>ポータルにも投稿</span></label>
       <div id="cwrap" hidden>
         <div class="tt"><div class="ta"></div><input id="ptitle" type="text" placeholder="タップして入力" aria-label="1日の題名"></div>
@@ -548,19 +560,20 @@ function moodUI(){
 }
 function editor(){
   if(tab==='portal'){portalEditor();return}
-  const co=tab==='coin';$('#ta').removeAttribute('maxlength');$('#ptgw').hidden=co||!!editId||isT();$('#ptg').checked=false;$('#st').textContent=(tab==='dream'&&!editId&&mem.entries.some(e=>e.type==='dream'&&e.date===sel))?'この日の夢日記は書きました。直すときは「編集」を押してください':'';$('#cwrap').hidden=!co;$('#dwrap').hidden=co;$('#pfc').hidden=!co;$('#pfd').hidden=co;$('#cl').hidden=co;$('#cundo').hidden=!co;
+  const co=tab==='coin';$('#ta').removeAttribute('maxlength');$('#ptgw').hidden=co||!!editId||isT();$('#ptg').checked=false;$('#st').textContent=(tab==='dream'&&!editId&&mem.entries.some(e=>e.type==='dream'&&e.date===sel))?'この日の夢日記は書きました。直すときは「編集」を押してください':'';$('#cwrap').hidden=!co;$('#dwrap').hidden=co;$('#dfx').hidden=co||tab!=='dream';$('#pfc').hidden=!co;$('#pfd').hidden=co;$('#cl').hidden=co;$('#cundo').hidden=!co;
   if(co){$('#sd').textContent=md(sel);$('#mood').hidden=true;coinPanel();grow();return}
   $('#sd').textContent=(editId?'編集中: ':isT()?'予定: ':'')+md(sel);
-  const dr=mem.drafts[dk()];let t='',m=0;
-  if(dr){t=dr.text||'';m=dr.mood||0}
-  else if(editId){const e=mem.entries.find(x=>x.id===editId);if(e){t=e.text;m=e.mood||0}}
-  $('#ta').value=t;$('#ta').placeholder=isT()?'予定を書く':'ここに書く';mood=m;moodUI();
+  const dr=mem.drafts[dk()];let t='',m=0,pl='',sx='';
+  if(dr){t=dr.text||'';m=dr.mood||0;pl=dr.place||'';sx=dr.sit||''}
+  else if(editId){const e=mem.entries.find(x=>x.id===editId);if(e){t=e.text;m=e.mood||0;pl=e.place||'';sx=e.sit||''}}
+  $('#dpl').value=pl;$('#dst').value=sx;$('#ta').value=t;$('#ta').placeholder=isT()?'予定を書く':'ここに書く';mood=m;moodUI();
   $('#send').textContent=editId?'更新':isT()?'追加':'保存';$('#cancel').hidden=!editId;
   $('#st').textContent=dr&&t?'下書きを復元しました':'';grow();
 }
-function commitDraft(){const t=$('#ta').value;if(t||mood)mem.drafts[dk()]={text:t,mood};else delete mem.drafts[dk()];save();$('#st').textContent=(t||mood)?'下書き保存済み':''}
+function commitDraft(){const t=$('#ta').value,pl=$('#dpl').value,sx=$('#dst').value;if(t||mood||pl||sx)mem.drafts[dk()]={text:t,mood,place:pl,sit:sx};else delete mem.drafts[dk()];save();$('#st').textContent=(t||mood)?'下書き保存済み':''}
 const flush=()=>{clearTimeout(tmr);if(!$('#pw').hidden&&tab!=='coin')commitDraft()};
 function draft(){clearTimeout(tmr);tmr=setTimeout(commitDraft,300)}
+['#dpl','#dst'].forEach(q=>$(q).addEventListener('input',draft));
 let emK=null;
 function emMenu(e){const m=document.createElement('div');m.className='pmenu';const eb=document.createElement('button');eb.textContent='編集';eb.onclick=()=>{emK=null;flush();editId=e.id;sel=e.date;anchor=parse(e.date);renderAll();openPanel(false)};
   const xb=document.createElement('button');xb.textContent=delId===e.id?'もう一度押すと削除':'削除';xb.onclick=()=>{if(delId===e.id){mem.entries=mem.entries.filter(x=>x.id!==e.id);delId=null;emK=null;save();renderAll()}else{delId=e.id;list();setTimeout(()=>{if(delId===e.id){delId=null;list()}},3000)}};m.append(eb,xb);return m}
@@ -578,10 +591,10 @@ function list(){
     if(e.mood){const m=document.createElement('span');m.className='m';m.textContent=MOODS[e.mood-1];h.appendChild(m)}
     const ac=document.createElement('div');ac.className='act';
     const mb=document.createElement('button');mb.className='pmn';mb.textContent='⋮';mb.setAttribute('aria-label','メニュー');mb.onclick=()=>{emK=emK===e.id?null:e.id;delId=null;list()};
-    const pb=document.createElement('button');pb.textContent=e.pid?'投稿済み':'ポータルへ';pb.disabled=!!e.pid;pb.onclick=()=>pPost(tab,e.text,e.mood||0,e.date,e);
+    const pb=document.createElement('button');pb.textContent=e.pid?'投稿済み':'ポータルへ';pb.disabled=!!e.pid;pb.onclick=()=>pPost(tab,e.text+(e.place?'\n場所: '+e.place:'')+(e.sit?'\n状況: '+e.sit:''),e.mood||0,e.date,e);
     ac.append(pb,mb);h.appendChild(ac);
     const p=document.createElement('p');p.textContent=e.text;
-    a.append(h);if(emK===e.id)a.appendChild(emMenu(e));a.append(p);L.appendChild(a);
+    a.append(h);if(emK===e.id)a.appendChild(emMenu(e));a.append(p);if(e.place||e.sit){const f=document.createElement('div');f.className='pchip';f.textContent=[e.place&&'場所: '+e.place,e.sit&&'状況: '+e.sit].filter(Boolean).join(' / ');a.append(f)}L.appendChild(a);
   });
 }
 function todos(){
@@ -743,7 +756,7 @@ function show(){
   $('#g1').hidden=$('#tkrow').hidden=tab!=='coin';tixUI();if(tab!=='coin')clearInterval(gt);
   $('#q').value='';document.body.dataset.tab=tab;
   document.querySelectorAll('.tabs button').forEach(b=>b.setAttribute('aria-selected',b.dataset.t===tab));
-  $('#diaryUI').hidden=tab==='portal';$('#portalUI').hidden=tab!=='portal';if(tab==='portal'){$('#pin').classList.remove('on');$('#pin').inert=true}document.body.toggleAttribute('data-pgd',tab==='portal'&&pPg==='d');pBadge();
+  $('#diaryUI').hidden=tab==='portal';$('#portalUI').hidden=tab!=='portal';if(tab==='portal'){$('#pin').classList.remove('on');$('#pin').inert=true}document.body.toggleAttribute('data-pgd',tab==='portal'&&pPg==='d');pBadge();{const t=$('#ptl');if(t)t.textContent=({portal:'ポータル',diary:'日記',dream:'夢日記',coin:'貨幣'})[tab]||''}
   renderAll();
 }
 function grow(){
@@ -795,10 +808,10 @@ $('#send').onclick=()=>{
   if(tab==='portal'){if(!pOK()){$('#st').textContent='投稿は、ログインしているときだけ使えます';return}clearTimeout(tmr);delete mem.drafts[dk()];save();closePanel(true);renderAll();pPost('tweet',t,0,sel);return}
   const wp=!$('#ptgw').hidden&&$('#ptg').checked;if(wp&&!pOK()){$('#st').textContent='ポータルには、GitHub Pagesでログインしたときだけ投稿できます';return}
   if(tab==='dream'&&!editId&&mem.entries.some(e=>e.type==='dream'&&e.date===sel)){$('#st').textContent='夢日記は、1日1回までです。この日の分は、編集か削除をしてください';return}
-  clearTimeout(tmr);let msg='保存しました';
-  if(editId){const e=mem.entries.find(x=>x.id===editId);if(e){e.text=t;e.mood=mood}delete mem.drafts['e|'+editId];editId=null;msg='更新しました'}
+  clearTimeout(tmr);let msg='保存しました';const px=tab==='dream'?{place:$('#dpl').value.trim(),sit:$('#dst').value.trim()}:{};
+  if(editId){const e=mem.entries.find(x=>x.id===editId);if(e){e.text=t;e.mood=mood;Object.assign(e,px)}delete mem.drafts['e|'+editId];editId=null;msg='更新しました'}
   else if(isT()){mem.todos.push({id:uid(),date:sel,text:t,done:false});delete mem.drafts['t|'+sel];msg='予定に追加しました'}
-  else{const n=new Date();const ne={id:uid(),type:tab,date:sel,time:pad(n.getHours())+':'+pad(n.getMinutes()),text:t,mood};mem.entries.push(ne);delete mem.drafts[tab+'|'+sel];entTix(t);if(wp)pPost(tab,t,mood,sel,ne)}
+  else{const n=new Date();const ne={id:uid(),type:tab,date:sel,time:pad(n.getHours())+':'+pad(n.getMinutes()),text:t,mood,...px};mem.entries.push(ne);delete mem.drafts[tab+'|'+sel];entTix(t);if(wp)pPost(tab,t+(px.place?'\n場所: '+px.place:'')+(px.sit?'\n状況: '+px.sit:''),mood,sel,ne)}
   save();closePanel(true);renderAll();
 };
 $('#ex').onclick=()=>{
@@ -1024,7 +1037,7 @@ S('α3.1','修整',0,[['変更','その他欄の中をボタンで項目分け�
 ['α3.3c','解説の追加',0,[['追加','硬貨ガシャの年号ごとの解説(レアでない年号も含む)'],['変更','紙幣ガシャを、使えないメンテナンス中の表示に'],['変更','歴史欄のタイトルを短く整理'],['追加','歴史欄のα2.0に、旧α1.3の説明']]],
 ['α3.3d','額面別ガシャ',0,[['追加','額面別の硬貨ガシャ(券2枚、「額面別」を押すと出るポップアップで額面を選ぶ)'],['変更','硬貨タブのガシャを「貨幣ガシャ」の1ボタンに、ガシャ画面のバーで種類を選ぶ形に'],['変更','券の無制限をやめて、券の配布(5億枚)に'],['変更','図鑑の額面を小さい順に、最初は1円で、前に開いた額面を覚える'],['変更','解説の見出しを「500円 平成12年について」の形に']]]]],
 S('α3.4','パスコードで開放',0,[['追加','プ流不ボタンを押すとリボンメッセージ「プ流不入手!」が出る、パスコード「coin」で硬貨タブと貨幣の解説が開く、パスコード「history」で歴史が開く、一度開いたものはそのまま開いたままになる'],['変更','硬貨タブと貨幣の解説と歴史を最初は隠した状態に、これまでに使っていた人は開いた状態のまま引き継ぐ、パスコードを大文字・小文字の区別なしに、「Zomikasu」の表記を「zomikasu」に']])]],
-["α4.0台","ログインと共有",[["α4.0","ログインとパスコード",[["α4.0","ログインとパスコード",0,[["追加","その他欄に「ログイン」の項目、ログインコードを貼ってログインしてログアウトするまでログイン画面を出さない、ログインのときに共有先のリポジトリが非公開かどうかを確かめる"],["変更","パスコードを設定の中から出して歴史や設定と同じ並びの独立した項目に、夢日記と貨幣収集のカレンダーで今の月より先へ進めないように"]]],["α4.0a","ログイン画面を最初に",1,[["追加","GitHub Pagesで開いたときにアプリを開くと最初にログイン画面が出てログインしたあとに日記などのページへ移る、パスコードの入力欄をその他欄の一覧の一番下に直接置く、設定にログイン中の表示とログアウトボタンを追加"],["変更","その他欄の「ログイン」の項目を設定の中のログアウトにまとめる、バックアップを設定の一番下に移動、パスコードの項目をやめて入力欄だけに"]]],["α4.0b","メール登録と承認",1,[["追加","GitHub Pagesで開くとメールアドレスとパスワードのログイン画面が出る、新規登録は名前と合言葉を入れて承認待ちになる、管理者が設定の中のメンバーの承認で承認と取り消しをする、パスワードを忘れたときの再設定メール、一度ログインすると通信がなくても開ける"],["変更","ログインコードによるログインをやめてFirebaseのアカウントに切り替え、Firebaseの設定が未入力のときはログイン画面を出さない"]],"旧α4.1"]]],["α4.1","Googleでログイン",[["α4.1","Googleでログイン",1,[["追加","Googleアカウントでログインする、初めての人は名前とIDと合言葉で登録する、IDは英字・数字・_ の2〜16文字で重複しない、承認の一覧にIDとGoogleのメールを表示する、データの置き場所をRealtime Databaseにして設定を入れた"],["変更","メールアドレスとパスワードによるログインをやめた、ログイン中は設定のIDが登録したIDに固定される"]],"旧α4.1a"]]],["α4.2","ポータル",[["α4.2","ポータル",1,[["追加","ポータルのタブ(一番左・青色)、[つぶやきと日記]と[夢日記]の2ページで承認済みの人の投稿を新しい順に見られる、ポータルの✎ボタン(スライド入力)からつぶやきを投稿できる、日記と夢日記の入力欄に「ポータルにも投稿」のスイッチ(初期はオフ)、記録の一覧に「ポータルへ」ボタン、自分の投稿を削除できる(管理者は全員分を削除できる)"],["変更","ポータルの投稿は記録のコピーとして独立していて、あとで記録を直してもポータル側は変わらない、予定は投稿できない、歴史の版の名前を整理(旧α4.1をα4.0b、旧α4.1aをα4.1に)"]]]]],["α4.3","IDログイン",[["α4.3","IDログイン",1,[["追加","IDとパスワードでログインする機能、ログイン画面の「Googleでログイン」の下にIDとパスワードの欄、設定のログインの中にパスワードの設定欄(Googleでログインしたあとに作る、8文字以上、あとから変更もできる)、別の端末でもGoogleを通さずに同じアカウントで入れる"],["変更","パスワードを忘れたときは、Googleでログインして設定から作り直す、設定のGoogle欄は、IDとパスワードでログインしているときは「IDとパスワードでログイン中」と表示"]]]]],["α4.4","ポータルの見た目",[["α4.4","ポータルの見た目",1,[["追加","投稿者ごとのアイコン(名前の最初の1文字、色はIDで決まる)、新着の投稿に「NEW」の印と「ここまで読みました」の線、下のタブの「ポータル」に新着の件数のバッジ、日記の投稿に記録の日付、長い日記は3行で折りたたんで「続きを読む」"],["変更","つぶやき(青)・日記(オレンジ)・夢日記(紫)で札とカード左端の色を分けた、自分の投稿は薄く色を付けて「あなた」と表示、ログインしている間は、ポータルを開いていなくても新しい投稿を読み込む"]]],["α4.4a","ポータルの読み込み",1,[["追加","夢日記のページを1日ずつ見られるようにした(◀ ▶と「今日」で日付を移る)、つぶやきと日記のページは最初に10件だけ読み込んで「もっと読み込む」で10件ずつ増やす"],["変更","ポータルの夢日記のページでは、✎のスライドボタンを出さないようにした、下のタブの新着バッジは前に見た時刻より新しい投稿だけを読み込んで数える、ポータルを開いている間だけ投稿を読み込む"]]],["α4.4b","反応と不具合直し",1,[["追加","ポータルのつぶやきと日記に「いいね」「シネシネ」「リプ」のボタン(押した数が出る、リプは返信の欄が開く、自分のリプは消せる)、夢日記は記録を1日1回までにした、管理者だけIDを設定で変えられて1文字から使えるようにした"],["変更","IDを変えたあとは、設定でパスワードをもう一度設定すると、新しいIDでログインできるようにした、ポータルに移ったときも上に残っていた小さなカレンダーを消すようにした、iPhoneでたまに反応しなかったスライド入力ボタンを直す予防を入れた、リプを入力している間は画面を作り直さないようにした"]]]]],["α4.5","ゾミカスダンジョンのチケット",[["α4.5","ゾミカスダンジョンのチケット",1,[["追加","ポータルに投稿すると、ゲーム「ゾミカスダンジョン」で使えるチケットのコードが1日1枚もらえる(投稿した直後に表示、コピーボタン付き、有効期限は約1か月)、設定に「ゾミカスダンジョンのチケット」の項目(もらったチケットを見返してコピーできる)、ゲームの専用リンク(?from=zomika または #zomika)から開いたときにチケットの説明を出す、夢日記の「ポータルにも投稿」にチェックを付けたときに内容を盛らないよう注意するポップアップ"],["変更","バックアップにもらったチケットも入れた"]]],["α4.5a","4.4・4.5の修整",1,[["変更","貨幣収集の券を「ガシャ券」の表記にして、日記・夢日記では出さず、貨幣収集の記録でだけもらえるようにした(いまある券はそのまま)、ポータルのいいね・シネシネのボタンを、👍と🖕の絵文字の下に小さく文字を入れる形に(押していないときは絵文字がグレー、押すと本来の色とアクセント色の枠になる)、リプのボタンを開いたときの色を薄くした"],["修正","設定で名前を変えたときに、ポータルの投稿とリプの名前にも使われるように、リプを送ったあと入力欄がすぐ空になるように、歴史欄にα4.5が出ていなかったのを直した、α4.4とα4.5を公開にした"]]],["α4.5b","ポータルの色とボタン",1,[["追加","自分の投稿にリプが来たときに、ポータルのタブに「リプ」の印を出して、アプリを開いているときは知らせるようにした(ほかの人の新着の印はそのまま)"],["変更","ポータルの色を、明るい水色寄りの青にした(ライトは背景#e0f5fd・アクセント#0a95c9)、いいね・シネシネのボタンは、数字が増えてもサイズが変わらないように数字の場所を最初からとった、ボタンの行に枠をつけた、ゾミカスダンジョンのチケットは、いったん出ないようにした(あとで戻せる)"]]],["α4.5c","ボタンと見やすさ",1,[["変更","いいね・シネシネ・リプのボタンを、白黒の線のアイコンと数字を横に並べて下に小さく名前を入れる形にした(余白を小さくして、1行に収まるように)、リプのボタンにも吹き出しのアイコンをつけた、自分の投稿だけを染める表示をやめた、ポータルのダークモードで、投稿のカードを少し明るくして、左の線の色も明るくした"]]]]],["α4.6","夢バトル",[["α4.6","夢バトル",1,[["追加","夢バトル(ポータルの「つぶやきと日記」「夢日記」の切り替えの下に帯が出る、タップすると夢バトルの画面が開く)、毎日12:00に投票が始まり、最初の3時間は目立つ色の帯で「開催中」と出る、朝5:00に結果が見られる(それまでは票数は見えない)、テーマは用意した16個と、みんなが送って管理者が採用した案からランダムに決まる、前日12:00から当日12:00までに投稿された夢日記が参加作品になる、1人1票で自分の夢にも投票できる、テーマ案を送る欄(管理者は採用・却下ができる)"],["変更","Firebaseのルールに「battle」の部分を足すと動く(足すまで、投票とテーマ案は送れない)"]]],["α4.6a","券と夢バトル",1,[["追加","ガシャ券がもらえる条件(日記か夢日記を書くと1日10枚、貨幣収集の記録で3枚、ポータルへのつぶやきで1日1枚、夢バトルの優勝で20枚、貨幣欄を開いていないともらえない)、パスコード「tickets」「tickets1」から「tickets9」で100枚ずつ、「ticketsP」で1万枚(どれも1回だけ)、夢バトルの勝利ポイントとランキング(夢バトルの画面の上のボタンから、同率は全員に1ポイント)"],["変更","券の5億枚をやめて、みんな0枚に戻した、夢バトルの参加作品を、その日の日付の夢日記だけに(12:00のあとに書いたものも、翌朝5:00の投票終了までは入る)、夢バトルの帯の背景を白に、Firebaseのルールにbattleの勝者の記録(days/日付/win)を足すと動く"]]],["α4.6b","ガシャと夢バトルの表示",1,[["追加","ガシャの確定演出(ゴールドとシルバーは、回した瞬間にゆっくりになって、その色の星が回転しながら広がってから抽選される)、結果が出る瞬間の光と粒の演出、夢日記の画面の一番上に、その日の夢バトルのお題、優勝した夢日記を金色の枠で囲む、夢バトルの投票ボタンの横に、投票した人のアイコン"],["変更","ガシャのためを約2.5秒に(ゴールドとシルバーは約4秒)、抽選中は連打できないように、ポータルの切り替えと夢バトルの帯を上に固定(開催中の帯は、スクロールすると小さくなる)"]]],["α4.6c","投稿の編集",0,[["追加","ポータルの投稿(つぶやき・日記・夢日記・リプ)を、あとから直せる(直した投稿には「編集済み」と薄く出る)、投稿の右上の「⋮」から「編集」と「削除」を選ぶ形に(管理者はすべての投稿に、ほかの人は自分の投稿にだけ付く、他人の投稿で選べるのは削除だけ)"],["変更","投票が始まった夢バトルの夢日記は、投票が終わる(翌朝5:00)まで編集できない、4.6bは公開版で、4.6cは非公開版"]]],["α4.6d","結果発表と演出",1,[["追加","夢バトルの結果発表の大きな帯(「結果発表!」、結果を見るまで大きいまま)、帯を開いても「発表する」を押すまで誰が優勝か分からない、夢日記にもいいね・シネシネ・リプ、ガシャの確定演出(ゴールドは約60%、シルバーは約50%で、その色の星が先に出る)、ゴールドが出たときに画面が少し揺れる"],["変更","夢バトルの帯は「夢日記」の側だけに表示(つぶやきと日記には出ない)、上に固定した部分を前と同じ幅に戻して歯車の行の下に固定、夢バトルの帯と画面の長い文字を折り返す(画面が横に広がらないように)、ガシャのためを約1.5秒にして最後の遅い切り替えをなくした、歴史欄のファイル添付をすべて削除して軽くした、4.6bを公開、4.6cを非公開に"]]],["α4.6e","コラボと⋮",1,[["追加","ゾミカスダンジョンのチケットを、また出るようにした(ポータルに投稿すると1日1枚)、「⋮」のメニューを、個人の日記・夢日記にも付けた(編集と削除)、ガシャの即確定演出(引いてすぐ、その色の大きな星が回りながら広がってから結果が出る。ゴールドは25%、シルバーは20%の確率)、ログイン中でもIDを変えられるように(回数の制限なし、新しいIDが使われていなければ変えられる)、名前を変えるときに、次に変えられるのは1か月後という警告、アカウントを作る画面に、名前はだれか分かるようにという注意"],["変更","夢バトル開催中の帯を、「夢バトル」を大きく見せるデザインに、固定する部分は切り替えと細い1行だけにして、大きな帯は固定せずに流れるように(スクロールがガクガクする問題を直した)、「⋮」をカードの右上に固定、名前の変更を1か月に1回までに、別のアカウントでログインしたときに名前が同期される問題を直した(アカウントごとの名前を使う)、「実績」の項目を一旦オフに(データは残してある)、額面別ガシャの確率の直しは次の回に回した"]]],["α4.6f","確率と夢バトルの時間",1,[["追加","額面別ガシャの確率を、額面ごとに決めた数字に(1円はゴールド5%・ブロンズ5%、5円はゴールド・シルバー・ブロンズが2.5%ずつでレアが22.5%、50円はゴールド3%・シルバー1%・ブロンズ5%・レア21%、10円・100円・500円はすべての年号が均等)、ガシャの確率の表を、選んだ額面の表に切り替わるように、年号の説明を追加(1円S42/S44・H26/H27、5円S34、10円S34・H25、50円S49・H7・S57〜S61)、夢日記のタブの上に「開催中」「結果発表」の印、夢バトルの細い帯の左端に赤い「開催中」"],["変更","夢バトルの投票を12:00から21:00までに(21:00にすぐ結果が出る、勝者の確定とガシャ券20枚、勝利ポイントも21:00以降)、開催中の大きな帯を21:00までずっと出すように、結果が出たあとの細い帯は「結果発表中」に、参加作品は21:00までに投稿された、その日の日付の夢日記"]]]]]]]];
+["α4.0台","ログインと共有",[["α4.0","ログイン画面",[["α4.0","ログイン画面",0,[["追加","その他欄に「ログイン」の項目、ログインコードを貼ってログインしてログアウトするまでログイン画面を出さない、ログインのときに共有先のリポジトリが非公開かどうかを確かめる"],["変更","パスコードを設定の中から出して歴史や設定と同じ並びの独立した項目に、夢日記と貨幣収集のカレンダーで今の月より先へ進めないように"]]],["α4.0a","ログイン画面を最初に",1,[["追加","GitHub Pagesで開いたときにアプリを開くと最初にログイン画面が出てログインしたあとに日記などのページへ移る、パスコードの入力欄をその他欄の一覧の一番下に直接置く、設定にログイン中の表示とログアウトボタンを追加"],["変更","その他欄の「ログイン」の項目を設定の中のログアウトにまとめる、バックアップを設定の一番下に移動、パスコードの項目をやめて入力欄だけに"]]],["α4.0b","メール登録と承認",1,[["追加","GitHub Pagesで開くとメールアドレスとパスワードのログイン画面が出る、新規登録は名前と合言葉を入れて承認待ちになる、管理者が設定の中のメンバーの承認で承認と取り消しをする、パスワードを忘れたときの再設定メール、一度ログインすると通信がなくても開ける"],["変更","ログインコードによるログインをやめてFirebaseのアカウントに切り替え、Firebaseの設定が未入力のときはログイン画面を出さない"]],"旧α4.1"]]],["α4.1","Googleでログイン",[["α4.1","Googleでログイン",1,[["追加","Googleアカウントでログインする、初めての人は名前とIDと合言葉で登録する、IDは英字・数字・_ の2〜16文字で重複しない、承認の一覧にIDとGoogleのメールを表示する、データの置き場所をRealtime Databaseにして設定を入れた"],["変更","メールアドレスとパスワードによるログインをやめた、ログイン中は設定のIDが登録したIDに固定される"]],"旧α4.1a"]]],["α4.2","ポータル",[["α4.2","ポータル",1,[["追加","ポータルのタブ(一番左・青色)、[つぶやきと日記]と[夢日記]の2ページで承認済みの人の投稿を新しい順に見られる、ポータルの✎ボタン(スライド入力)からつぶやきを投稿できる、日記と夢日記の入力欄に「ポータルにも投稿」のスイッチ(初期はオフ)、記録の一覧に「ポータルへ」ボタン、自分の投稿を削除できる(管理者は全員分を削除できる)"],["変更","ポータルの投稿は記録のコピーとして独立していて、あとで記録を直してもポータル側は変わらない、予定は投稿できない、歴史の版の名前を整理(旧α4.1をα4.0b、旧α4.1aをα4.1に)"]]]]],["α4.3","IDログイン",[["α4.3","IDログイン",1,[["追加","IDとパスワードでログインする機能、ログイン画面の「Googleでログイン」の下にIDとパスワードの欄、設定のログインの中にパスワードの設定欄(Googleでログインしたあとに作る、8文字以上、あとから変更もできる)、別の端末でもGoogleを通さずに同じアカウントで入れる"],["変更","パスワードを忘れたときは、Googleでログインして設定から作り直す、設定のGoogle欄は、IDとパスワードでログインしているときは「IDとパスワードでログイン中」と表示"]]]]],["α4.4","ポータルの見た目",[["α4.4","ポータルの見た目",1,[["追加","投稿者ごとのアイコン(名前の最初の1文字、色はIDで決まる)、新着の投稿に「NEW」の印と「ここまで読みました」の線、下のタブの「ポータル」に新着の件数のバッジ、日記の投稿に記録の日付、長い日記は3行で折りたたんで「続きを読む」"],["変更","つぶやき(青)・日記(オレンジ)・夢日記(紫)で札とカード左端の色を分けた、自分の投稿は薄く色を付けて「あなた」と表示、ログインしている間は、ポータルを開いていなくても新しい投稿を読み込む"]]],["α4.4a","ポータルの読み込み",1,[["追加","夢日記のページを1日ずつ見られるようにした(◀ ▶と「今日」で日付を移る)、つぶやきと日記のページは最初に10件だけ読み込んで「もっと読み込む」で10件ずつ増やす"],["変更","ポータルの夢日記のページでは、✎のスライドボタンを出さないようにした、下のタブの新着バッジは前に見た時刻より新しい投稿だけを読み込んで数える、ポータルを開いている間だけ投稿を読み込む"]]],["α4.4b","反応と不具合直し",1,[["追加","ポータルのつぶやきと日記に「いいね」「シネシネ」「リプ」のボタン(押した数が出る、リプは返信の欄が開く、自分のリプは消せる)、夢日記は記録を1日1回までにした、管理者だけIDを設定で変えられて1文字から使えるようにした"],["変更","IDを変えたあとは、設定でパスワードをもう一度設定すると、新しいIDでログインできるようにした、ポータルに移ったときも上に残っていた小さなカレンダーを消すようにした、iPhoneでたまに反応しなかったスライド入力ボタンを直す予防を入れた、リプを入力している間は画面を作り直さないようにした"]]]]],["α4.5","ゾミダンコラボ",[["α4.5","ゾミダンコラボ",1,[["追加","ポータルに投稿すると、ゲーム「ゾミカスダンジョン」で使えるチケットのコードが1日1枚もらえる(投稿した直後に表示、コピーボタン付き、有効期限は約1か月)、設定に「ゾミカスダンジョンのチケット」の項目(もらったチケットを見返してコピーできる)、ゲームの専用リンク(?from=zomika または #zomika)から開いたときにチケットの説明を出す、夢日記の「ポータルにも投稿」にチェックを付けたときに内容を盛らないよう注意するポップアップ"],["変更","バックアップにもらったチケットも入れた"]]],["α4.5a","4.4・4.5の修整",1,[["変更","貨幣収集の券を「ガシャ券」の表記にして、日記・夢日記では出さず、貨幣収集の記録でだけもらえるようにした(いまある券はそのまま)、ポータルのいいね・シネシネのボタンを、👍と🖕の絵文字の下に小さく文字を入れる形に(押していないときは絵文字がグレー、押すと本来の色とアクセント色の枠になる)、リプのボタンを開いたときの色を薄くした"],["修正","設定で名前を変えたときに、ポータルの投稿とリプの名前にも使われるように、リプを送ったあと入力欄がすぐ空になるように、歴史欄にα4.5が出ていなかったのを直した、α4.4とα4.5を公開にした"]]],["α4.5b","ポータルの色とボタン",1,[["追加","自分の投稿にリプが来たときに、ポータルのタブに「リプ」の印を出して、アプリを開いているときは知らせるようにした(ほかの人の新着の印はそのまま)"],["変更","ポータルの色を、明るい水色寄りの青にした(ライトは背景#e0f5fd・アクセント#0a95c9)、いいね・シネシネのボタンは、数字が増えてもサイズが変わらないように数字の場所を最初からとった、ボタンの行に枠をつけた、ゾミカスダンジョンのチケットは、いったん出ないようにした(あとで戻せる)"]]],["α4.5c","ボタンと見やすさ",1,[["変更","いいね・シネシネ・リプのボタンを、白黒の線のアイコンと数字を横に並べて下に小さく名前を入れる形にした(余白を小さくして、1行に収まるように)、リプのボタンにも吹き出しのアイコンをつけた、自分の投稿だけを染める表示をやめた、ポータルのダークモードで、投稿のカードを少し明るくして、左の線の色も明るくした"]]]]],["α4.6","夢バトル",[["α4.6","夢バトル",1,[["追加","夢バトル(ポータルの「つぶやきと日記」「夢日記」の切り替えの下に帯が出る、タップすると夢バトルの画面が開く)、毎日12:00に投票が始まり、最初の3時間は目立つ色の帯で「開催中」と出る、朝5:00に結果が見られる(それまでは票数は見えない)、テーマは用意した16個と、みんなが送って管理者が採用した案からランダムに決まる、前日12:00から当日12:00までに投稿された夢日記が参加作品になる、1人1票で自分の夢にも投票できる、テーマ案を送る欄(管理者は採用・却下ができる)"],["変更","Firebaseのルールに「battle」の部分を足すと動く(足すまで、投票とテーマ案は送れない)"]]],["α4.6a","券と夢バトル",1,[["追加","ガシャ券がもらえる条件(日記か夢日記を書くと1日10枚、貨幣収集の記録で3枚、ポータルへのつぶやきで1日1枚、夢バトルの優勝で20枚、貨幣欄を開いていないともらえない)、パスコード「tickets」「tickets1」から「tickets9」で100枚ずつ、「ticketsP」で1万枚(どれも1回だけ)、夢バトルの勝利ポイントとランキング(夢バトルの画面の上のボタンから、同率は全員に1ポイント)"],["変更","券の5億枚をやめて、みんな0枚に戻した、夢バトルの参加作品を、その日の日付の夢日記だけに(12:00のあとに書いたものも、翌朝5:00の投票終了までは入る)、夢バトルの帯の背景を白に、Firebaseのルールにbattleの勝者の記録(days/日付/win)を足すと動く"]]],["α4.6b","ガシャと夢バトルの表示",1,[["追加","ガシャの確定演出(ゴールドとシルバーは、回した瞬間にゆっくりになって、その色の星が回転しながら広がってから抽選される)、結果が出る瞬間の光と粒の演出、夢日記の画面の一番上に、その日の夢バトルのお題、優勝した夢日記を金色の枠で囲む、夢バトルの投票ボタンの横に、投票した人のアイコン"],["変更","ガシャのためを約2.5秒に(ゴールドとシルバーは約4秒)、抽選中は連打できないように、ポータルの切り替えと夢バトルの帯を上に固定(開催中の帯は、スクロールすると小さくなる)"]]],["α4.6c","投稿の編集",0,[["追加","ポータルの投稿(つぶやき・日記・夢日記・リプ)を、あとから直せる(直した投稿には「編集済み」と薄く出る)、投稿の右上の「⋮」から「編集」と「削除」を選ぶ形に(管理者はすべての投稿に、ほかの人は自分の投稿にだけ付く、他人の投稿で選べるのは削除だけ)"],["変更","投票が始まった夢バトルの夢日記は、投票が終わる(翌朝5:00)まで編集できない、4.6bは公開版で、4.6cは非公開版"]]],["α4.6d","結果発表と演出",1,[["追加","夢バトルの結果発表の大きな帯(「結果発表!」、結果を見るまで大きいまま)、帯を開いても「発表する」を押すまで誰が優勝か分からない、夢日記にもいいね・シネシネ・リプ、ガシャの確定演出(ゴールドは約60%、シルバーは約50%で、その色の星が先に出る)、ゴールドが出たときに画面が少し揺れる"],["変更","夢バトルの帯は「夢日記」の側だけに表示(つぶやきと日記には出ない)、上に固定した部分を前と同じ幅に戻して歯車の行の下に固定、夢バトルの帯と画面の長い文字を折り返す(画面が横に広がらないように)、ガシャのためを約1.5秒にして最後の遅い切り替えをなくした、歴史欄のファイル添付をすべて削除して軽くした、4.6bを公開、4.6cを非公開に"]]],["α4.6e","コラボと⋮",1,[["追加","ゾミカスダンジョンのチケットを、また出るようにした(ポータルに投稿すると1日1枚)、「⋮」のメニューを、個人の日記・夢日記にも付けた(編集と削除)、ガシャの即確定演出(引いてすぐ、その色の大きな星が回りながら広がってから結果が出る。ゴールドは25%、シルバーは20%の確率)、ログイン中でもIDを変えられるように(回数の制限なし、新しいIDが使われていなければ変えられる)、名前を変えるときに、次に変えられるのは1か月後という警告、アカウントを作る画面に、名前はだれか分かるようにという注意"],["変更","夢バトル開催中の帯を、「夢バトル」を大きく見せるデザインに、固定する部分は切り替えと細い1行だけにして、大きな帯は固定せずに流れるように(スクロールがガクガクする問題を直した)、「⋮」をカードの右上に固定、名前の変更を1か月に1回までに、別のアカウントでログインしたときに名前が同期される問題を直した(アカウントごとの名前を使う)、「実績」の項目を一旦オフに(データは残してある)、額面別ガシャの確率の直しは次の回に回した"]]],["α4.6f","確率と夢バトルの時間",1,[["追加","額面別ガシャの確率を、額面ごとに決めた数字に(1円はゴールド5%・ブロンズ5%、5円はゴールド・シルバー・ブロンズが2.5%ずつでレアが22.5%、50円はゴールド3%・シルバー1%・ブロンズ5%・レア21%、10円・100円・500円はすべての年号が均等)、ガシャの確率の表を、選んだ額面の表に切り替わるように、年号の説明を追加(1円S42/S44・H26/H27、5円S34、10円S34・H25、50円S49・H7・S57〜S61)、夢日記のタブの上に「開催中」「結果発表」の印、夢バトルの細い帯の左端に赤い「開催中」"],["変更","夢バトルの投票を12:00から21:00までに(21:00にすぐ結果が出る、勝者の確定とガシャ券20枚、勝利ポイントも21:00以降)、開催中の大きな帯を21:00までずっと出すように、結果が出たあとの細い帯は「結果発表中」に、参加作品は21:00までに投稿された、その日の日付の夢日記"]]],["α4.7","種々の追加と修正",1,[["追加","各ページの左上に、ページの名前(ポータル・日記・夢日記・貨幣)を背景つきで表示、夢日記の入力欄に「場所」と「状況」の専用欄(本文の下に出る、日記の一覧とポータルの投稿にも出る)、ポータルの夢日記のタブの上に「夢バトル開催中」「夢バトル結果発表」の表示"],["変更","ポータルの投稿の上の行を、左に名前とID(長いIDは「…」で切る)、右に日付・つぶやき/日記のマーク・「⋮」を固定、リプ欄の「⋮」を右上に、結果を見たあとは「結果発表中」の帯を出さないように、設定の歯車に消せない通知の印が出る問題を直した(実績の項目を隠したため)、歴史欄のα4.0のタイトルを「ログイン画面」、α4.5のタイトルを「ゾミダンコラボ」に"]]]]]]]];
 let hd=false,_V;const VERS=()=>_V||(_V=JSON.parse(document.getElementById('vers').textContent));
 const PUB=p=>'<span class="pub '+(p?'p1">公開':'p0">非公開')+'</span>';
 const CH='<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--sub)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>';
@@ -1062,7 +1075,7 @@ $('#pamem').onclick=()=>{const r=getRec(sel);r.memos.push('');save();panelMemos(
 const CATIDS=['set','hist','glos','ach','x1'];
 const LOCK={x1:'pw1',glos:'coin',hist:'history'},isOpen=id=>!LOCK[id]||!!mem.unlocked[LOCK[id]];
 function applyLocks(){const tb=document.querySelector('.tabs [data-t="coin"]');if(tb)tb.hidden=!mem.unlocked.coin;if(!mem.unlocked.coin&&tab==='coin'){tab='diary';show()}}
-function refreshMarks(){if(pgOpen===null)Object.keys(LOCK).forEach(id=>{const e=$('#ecb-'+id);if(e)e.hidden=!isOpen(id)});CATIDS.forEach(id=>{const n=$('#nd-'+id);if(n)n.hidden=!(mem.mark[id]&&isOpen(id))});$('#gnd').hidden=!CATIDS.some(id=>mem.mark[id]&&isOpen(id))}
+function refreshMarks(){if(pgOpen===null)Object.keys(LOCK).forEach(id=>{const e=$('#ecb-'+id);if(e)e.hidden=!isOpen(id)});CATIDS.forEach(id=>{const n=$('#nd-'+id);if(n)n.hidden=!(mem.mark[id]&&isOpen(id))});$('#gnd').hidden=!CATIDS.some(id=>id!=='ach'&&mem.mark[id]&&isOpen(id))}
 function unlock(id,cat){if(mem.unlocked[id])return;mem.unlocked[id]=Date.now();mem.mark[cat]=true;save();refreshMarks()}
 let pgOpen=null;
 document.querySelectorAll('.car').forEach(e=>e.textContent='›');
@@ -1078,7 +1091,7 @@ $('#pwb').onclick=()=>{const v=$('#pwi').value.toLowerCase(),m=$('#pwm');$('#pwi
 const FBC={apiKey:'AIzaSyBZ5eMzumtWGL2pjgdkm5BvjpZLSEgJYsA',authDomain:'paypayultra.firebaseapp.com',databaseURL:'https://paypayultra-default-rtdb.asia-southeast1.firebasedatabase.app',projectId:'paypayultra',appId:'1:286541751293:web:f637cfd0b8d39570f52f94'};
 var pOff=null,pData=[],pPg='a',pIn=false,pView=0,pDD=[],pBD=[],pdOff=null,pbOff=null,pbInit=false,pDay='',pLim=10,pRaw=20,pFull=false,pOpen={},pRD={},pDirty=false;
 const pOK=()=>!!(GATE&&FB&&fbUser&&(fbAdm||fbSt==='approved'));
-function portalEditor(){$('#cwrap').hidden=true;$('#dwrap').hidden=false;$('#pfc').hidden=true;$('#pfd').hidden=false;$('#cl').hidden=false;$('#cundo').hidden=true;$('#mood').hidden=true;$('#ptgw').hidden=true;
+function portalEditor(){$('#cwrap').hidden=true;$('#dwrap').hidden=false;$('#dfx').hidden=true;$('#pfc').hidden=true;$('#pfd').hidden=false;$('#cl').hidden=false;$('#cundo').hidden=true;$('#mood').hidden=true;$('#ptgw').hidden=true;
   const dr=mem.drafts[dk()];$('#sd').textContent='つぶやき';$('#ta').maxLength=300;$('#ta').value=dr?dr.text||'':'';$('#ta').placeholder='つぶやく(300文字まで)';$('#send').textContent='投稿';$('#cancel').hidden=true;$('#st').textContent=pOK()?'':'投稿は、ログインしているときだけ使えます';grow()}
 async function pPost(type,text,md_,date,en){if(!pOK()){toast('ポータルには投稿できませんでした');return}
   try{const r=FB.db.ref('portal/posts').push();await r.set({uid:fbUser.uid,name:myName(),id:fbId,type,text,mood:md_||0,date,ts:firebase.database.ServerValue.TIMESTAMP});
@@ -1143,13 +1156,13 @@ const bRank=c=>c.en.map(p=>({p,n:Object.values(c.vt).filter(x=>bVk(x)===p.k).len
 const bSn=t=>(t||'').replace(/\s+/g,' ').slice(0,14);
 function bnUpd(){const B=$('#bnr');if(!B)return;B.innerHTML='';{const x=$('#bbig');if(x)x.innerHTML=''}if(!pOK())return;const D=bId(),f=bPh();
   if(!bC||bC.D!==D||bC.r!==f.v||Date.now()-bC.t>3e5){if(!bBusy){bBusy=1;bLoad(D).then(c=>{bC=c},()=>{bC={D,th:null,en:[],vt:{},t:Date.now(),r:f.v}}).then(()=>{bBusy=0;bnUpd()})}if(!bC||bC.D!==D)return}
-  if(!bC.th)return;bSync();{const tb=$('#bTab');if(tb){const sh=f.v?'開催中':(!bSeen(D)?'結果発表':'');tb.textContent=sh;tb.hidden=!sh}}let el;
+  if(!bC.th)return;bSync();{const tb=$('#bTab');if(tb){const sh=f.v?'夢バトル開催中':(!bSeen(D)?'夢バトル結果発表':'');tb.textContent=sh;tb.hidden=!sh}}let el;
   if(f.v&&f.hot){el=pEl('button','bv');const a=pEl('div','bvA');a.append(pEl('span','bvn','夢バトル'),pEl('span','bdg','開催中'));el.append(a,pEl('div','bvl','今日のお題'),pEl('div','bvt','「'+bC.th+'」'),pEl('div','bvb','投票する ・ '+'21:00まで'))}
   else if(!f.v&&!bSeen(D)){el=pEl('button','rv');el.append(pEl('span','bwb','結果発表!'),pEl('div','bvt','優勝が決まりました!'),pEl('div','bvl','お題「'+bC.th+'」'),pEl('div','bvb','結果を見る'))}
   else{el=pEl('button','note bn');const a=pEl('div','bvh');
     if(f.v){a.append(pEl('span','bdg','開催中'),pEl('span','','夢バトル「'+bC.th+'」'),pEl('span','bvs','21:00まで ›'));el.append(a)}
     else{a.append(pEl('span','','結果発表中'),pEl('span','bvs','›'));el.append(a,pEl('div','bvl','次の夢バトルは12:00から'))}}
-  if(pPg!=='d')return;el.onclick=bOpen;
+  if(pPg!=='d'||(!f.v&&bSeen(D)))return;el.onclick=bOpen;
   if(el.className==='bv'||el.className==='rv'){const BB=$('#bbig');if(BB)BB.appendChild(el);const t=pEl('button','note bn'),a=pEl('div','bvh');a.append(...(f.v?[pEl('span','bdg','開催中')]:[]),pEl('span','',f.v?'夢バトル「'+bC.th+'」':'夢バトルの結果が出ました'),pEl('span','bvs',f.v?'21:00まで ›':'›'));t.append(a);t.onclick=bOpen;B.appendChild(t)}else B.appendChild(el)}
 async function bOpen(){const P=$('#bt'),B=$('#btb');P.hidden=false;B.textContent='読み込み中…';try{bC=await bLoad(bId())}catch(e){B.textContent='読み込めませんでした';return}bView()}
 function bView(){const B=$('#btb'),c=bC,f=bPh(),me=fbUser.uid,L=x=>B.appendChild(pEl('div','lb2',x));B.innerHTML='';
@@ -1208,11 +1221,14 @@ function pRender(){bnUpd();const L=$('#plist'),M=$('#pmsg'),D=pPg==='d',nv=$('#p
     const k=p.type==='dream'?'m':p.type==='diary'?'d':'t',mine=p.uid===me,tx0=p.text||'';
     const a=pEl('article','pc '+k+(mine?' me':''));a.style.setProperty('--pc',pCol(p.id||p.uid));const wi=D&&bDay[pDay]&&bDay[pDay].win&&bDay[pDay].win[p.uid];if(wi)a.classList.add('bwin');
     const av=pEl('div','pav',[...(p.name||p.id||'?')][0]);av.setAttribute('aria-hidden','true');
-    const b=pEl('div','pbd2'),h=pEl('div','pmt');
-    h.append(pEl('b','',p.name||p.id||'?'),pEl('span','',mine?'あなた':'@'+(p.id||'')),pEl('span','','・ '+pTm(p.ts)),...(p.ed?[pEl('span','ped','編集済み')]:[]));
-    if(isN(p))h.appendChild(pEl('span','pnew','NEW'));
-    if(wi)h.appendChild(pEl('span','bwb','優勝'));h.appendChild(pEl('span','ptg2',({t:'つぶやき',d:'日記',m:'夢日記'})[k]));
-    if(mine||fbAdm){const xb=pEl('button','pmn','⋮');xb.setAttribute('aria-label','メニュー');xb.onclick=()=>{mnK=mnK===p.k?null:p.k;delId=null;pRender()};h.appendChild(xb)}
+    const b=pEl('div','pbd2'),h=pEl('div','pmt'),hl=pEl('div','pml'),hr=pEl('div','pmr');
+    hl.append(pEl('b','',p.name||p.id||'?'),pEl('span','pid',mine?'あなた':'@'+(p.id||'')));
+    if(p.ed)hl.appendChild(pEl('span','ped','編集済み'));
+    if(isN(p))hl.appendChild(pEl('span','pnew','NEW'));
+    if(wi)hl.appendChild(pEl('span','bwb','優勝'));
+    hr.append(pEl('span','',pTm(p.ts)),pEl('span','ptg2',({t:'つぶやき',d:'日記',m:'夢日記'})[k]));
+    if(mine||fbAdm){const xb=pEl('button','pmn','⋮');xb.setAttribute('aria-label','メニュー');xb.onclick=()=>{mnK=mnK===p.k?null:p.k;delId=null;pRender()};hr.appendChild(xb)}
+    h.append(hl,hr);
     b.appendChild(h);if(mnK===p.k)b.appendChild(pMenu(p.k,mine,pLock(p),()=>{edK=p.k;mnK=null;pRender()},()=>pDel(p.k)));
     if(k==='d'&&p.date)b.appendChild(pEl('p','pdt',md(p.date)+'の日記'));
     if(k==='m'&&p.mood>=1&&p.mood<=5)b.appendChild(pEl('span','pchip','朝の体調 '+MOODS[p.mood-1]));
